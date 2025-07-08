@@ -1,0 +1,2313 @@
+{
+  "title": "Test de Python Avanzado",
+  "description": "Test con 100 preguntas sobre conceptos de Python avanzado.",
+  "category": "Programación",
+  "subcategory": "Python Avanzado",
+  "tags": [
+    "python",
+    "programación",
+    "avanzado"
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 2,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 3,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 4,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 5,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 6,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 7,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 8,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 9,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 10,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 11,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 12,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 13,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 14,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 15,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 16,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 17,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 18,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 19,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 20,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 21,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 22,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 23,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 24,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 25,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 26,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 27,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 28,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 29,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 30,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 31,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 32,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 33,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 34,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 35,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 36,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 37,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 38,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 39,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 40,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 41,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 42,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 43,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 44,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 45,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 46,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 47,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 48,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 49,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 50,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 51,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 52,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 53,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 54,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 55,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 56,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 57,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 58,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 59,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 60,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 61,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 62,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 63,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 64,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 65,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 66,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 67,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 68,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 69,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 70,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 71,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 72,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 73,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 74,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 75,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 76,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 77,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 78,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 79,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 80,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 81,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 82,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 83,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 84,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 85,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 86,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 87,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 88,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 89,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 90,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 91,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 92,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 93,
+      "question": "¿Qué es una comprensión de diccionarios?",
+      "options": [
+        {
+          "text": "Una forma de crear diccionarios usando expresiones",
+          "ok": true
+        },
+        {
+          "text": "Un método de ordenamiento",
+          "ok": false
+        },
+        {
+          "text": "Un iterador especial",
+          "ok": false
+        },
+        {
+          "text": "Un módulo interno",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 94,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 95,
+      "question": "¿Qué significa *args en una función?",
+      "options": [
+        {
+          "text": "Recibe un número variable de argumentos posicionales",
+          "ok": true
+        },
+        {
+          "text": "Recibe argumentos por palabra clave",
+          "ok": false
+        },
+        {
+          "text": "Devuelve un generador",
+          "ok": false
+        },
+        {
+          "text": "Importa una librería",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 96,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 97,
+      "question": "¿Cuál es la diferencia entre 'deepcopy' y 'copy'?",
+      "options": [
+        {
+          "text": "deepcopy copia todo, incluso objetos anidados",
+          "ok": true
+        },
+        {
+          "text": "No hay diferencia",
+          "ok": false
+        },
+        {
+          "text": "copy copia recursivamente",
+          "ok": false
+        },
+        {
+          "text": "copy borra los datos originales",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 98,
+      "question": "¿Qué hace la instrucción yield?",
+      "options": [
+        {
+          "text": "Devuelve un generador",
+          "ok": true
+        },
+        {
+          "text": "Termina un bucle",
+          "ok": false
+        },
+        {
+          "text": "Lanza una excepción",
+          "ok": false
+        },
+        {
+          "text": "Convierte a lista",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 99,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    },
+    {
+      "id": 100,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {
+          "text": "Una función que modifica otra función",
+          "ok": true
+        },
+        {
+          "text": "Una clase auxiliar",
+          "ok": false
+        },
+        {
+          "text": "Un tipo especial de variable",
+          "ok": false
+        },
+        {
+          "text": "Un módulo",
+          "ok": false
+        }
+      ],
+      "image": null
+    }
+  ]
+}

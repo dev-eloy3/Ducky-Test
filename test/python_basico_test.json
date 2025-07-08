@@ -1,0 +1,229 @@
+{
+  "title": "Test de Python Básico",
+  "description": "Test con 100 preguntas sobre conceptos básicos de Python.",
+  "category": "Programación",
+  "subcategory": "Python Básico",
+  "tags": ["python", "programación", "básico"],
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Cuál es la forma correcta de declarar una función en Python?",
+      "options": [
+        { "text": "function mi_funcion()", "ok": false },
+        { "text": "def mi_funcion():", "ok": true },
+        { "text": "func mi_funcion{}", "ok": false },
+        { "text": "define mi_funcion()", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 2,
+      "question": "¿Qué tipo de dato representa un número entero en Python?",
+      "options": [
+        { "text": "float", "ok": false },
+        { "text": "int", "ok": true },
+        { "text": "str", "ok": false },
+        { "text": "bool", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 3,
+      "question": "¿Cómo se inicia un bloque condicional en Python?",
+      "options": [
+        { "text": "if condition:", "ok": true },
+        { "text": "if condition then", "ok": false },
+        { "text": "if (condition) {}", "ok": false },
+        { "text": "if condition do", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 4,
+      "question": "¿Cuál es el símbolo para comentar una línea en Python?",
+      "options": [
+        { "text": "//", "ok": false },
+        { "text": "#", "ok": true },
+        { "text": "<!-- -->", "ok": false },
+        { "text": "/* */", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 5,
+      "question": "¿Qué función se usa para mostrar texto en pantalla?",
+      "options": [
+        { "text": "echo()", "ok": false },
+        { "text": "print()", "ok": true },
+        { "text": "display()", "ok": false },
+        { "text": "show()", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 6,
+      "question": "¿Cómo se define una variable con valor 10?",
+      "options": [
+        { "text": "var x = 10", "ok": false },
+        { "text": "x := 10", "ok": false },
+        { "text": "x = 10", "ok": true },
+        { "text": "int x = 10", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 7,
+      "question": "¿Qué valor tiene la expresión: bool('')?",
+      "options": [
+        { "text": "True", "ok": false },
+        { "text": "False", "ok": true },
+        { "text": "None", "ok": false },
+        { "text": "Error", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 8,
+      "question": "¿Cuál de estos tipos de datos es mutable?",
+      "options": [
+        { "text": "tuple", "ok": false },
+        { "text": "list", "ok": true },
+        { "text": "str", "ok": false },
+        { "text": "int", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 9,
+      "question": "¿Cómo se crea una lista vacía en Python?",
+      "options": [
+        { "text": "[]", "ok": true },
+        { "text": "{}", "ok": false },
+        { "text": "list()", "ok": true },
+        { "text": "()", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 10,
+      "question": "¿Qué operador se usa para la división entera?",
+      "options": [
+        { "text": "/", "ok": false },
+        { "text": "//", "ok": true },
+        { "text": "%", "ok": false },
+        { "text": "**", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 11,
+      "question": "¿Qué hace la función len()?",
+      "options": [
+        { "text": "Devuelve el número de elementos de un objeto", "ok": true },
+        { "text": "Convierte a entero", "ok": false },
+        { "text": "Convierte a cadena", "ok": false },
+        { "text": "Imprime en pantalla", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 12,
+      "question": "¿Cómo se indica un bloque de código dentro de una función?",
+      "options": [
+        { "text": "Con llaves {}", "ok": false },
+        { "text": "Con indentación", "ok": true },
+        { "text": "Con punto y coma", "ok": false },
+        { "text": "Con paréntesis", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 13,
+      "question": "¿Qué resultado da print(3 * 'a')?",
+      "options": [
+        { "text": "'aaa'", "ok": true },
+        { "text": "'3a'", "ok": false },
+        { "text": "'a3'", "ok": false },
+        { "text": "Error", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 14,
+      "question": "¿Cómo se llama el tipo de dato para verdadero o falso?",
+      "options": [
+        { "text": "int", "ok": false },
+        { "text": "bool", "ok": true },
+        { "text": "str", "ok": false },
+        { "text": "float", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 15,
+      "question": "¿Qué operador lógico significa 'y'?",
+      "options": [
+        { "text": "or", "ok": false },
+        { "text": "and", "ok": true },
+        { "text": "not", "ok": false },
+        { "text": "xor", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 16,
+      "question": "¿Qué función se usa para convertir un número a cadena?",
+      "options": [
+        { "text": "str()", "ok": true },
+        { "text": "int()", "ok": false },
+        { "text": "float()", "ok": false },
+        { "text": "bool()", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 17,
+      "question": "¿Qué método elimina el último elemento de una lista?",
+      "options": [
+        { "text": "pop()", "ok": true },
+        { "text": "remove()", "ok": false },
+        { "text": "delete()", "ok": false },
+        { "text": "discard()", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 18,
+      "question": "¿Cuál es el resultado de 5 % 2?",
+      "options": [
+        { "text": "2", "ok": false },
+        { "text": "1", "ok": true },
+        { "text": "0", "ok": false },
+        { "text": "3", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 19,
+      "question": "¿Cómo se inicia un bucle que itera 5 veces?",
+      "options": [
+        { "text": "for i in range(5):", "ok": true },
+        { "text": "while i < 5:", "ok": false },
+        { "text": "repeat 5 times:", "ok": false },
+        { "text": "for i = 1 to 5:", "ok": false }
+      ],
+      "image": null
+    },
+    {
+      "id": 20,
+      "question": "¿Cuál es la forma correcta de importar un módulo?",
+      "options": [
+        { "text": "import math", "ok": true },
+        { "text": "#include math", "ok": false },
+        { "text": "using math", "ok": false },
+        { "text": "require('math')", "ok": false }
+      ],
+      "image": null
+    }
+  ]
+}
