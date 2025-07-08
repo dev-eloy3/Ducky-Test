@@ -5,8 +5,8 @@ class TestResult(models.Model):
     # Test_id = models.ForeignKey(Test, on_delete=models.CASCADE)
     Fecha = models.DateTimeField(auto_now_add=True)
     pregunta = models.IntegerField()
-    respuesta = models.IntegerField()
-    respuesta_corecta = models.BooleanField(default=True) 
+    Respuesta = models.IntegerField()
+    Respuesta_corecta = models.BooleanField(default=True) 
 
 
 
