@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>{{ test.title }}</h1>
+  <p>{{ test.description }}</p>
+
+  {% for pregunta in test.questions %}
+    <div class="pregunta">
+      <h2>Pregunta {{ pregunta.id }}:</h2>
+      <p>{{ pregunta.question }}</p>
+
+      <ul>
+        {% for key, opcion in pregunta.options.items %}
+          <li class="opcion">
+            <label>
+              <input type="radio" name="pregunta_{{ pregunta.id }}" value="{{ text.text }}">
+              {{ text[key] }}
+            </label>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+{% endblock %}
