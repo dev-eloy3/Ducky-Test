@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Resultado del Test: {{ resultado.test_title }}</h2>
+  <p><strong>Fecha:</strong> {{ resultado.fecha|date:"d/m/Y H:i" }}</p>
+  <p class="lead">Aciertos: {{ aciertos }} / {{ total }}</p>
+
+  <p>DEBUG grafico_datos: {{ grafico_datos|default:"NO HAY DATOS" }}</p>
+
+  {% if grafico_datos %}
+    <hr>
+    <h4 class="mt-4">Inteligencia predominante: <strong>{{ predominante }}</strong></h4>
+    <canvas id="grafico" width="400" height="200"></canvas>
+    {{ grafico_datos|json_script:"grafico-datos" }}
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const datos = JSON.parse(document.getElementById('grafico-datos').textContent);
+      const ctx = document.getElementById('grafico').getContext('2d');
+      console.log(datos);
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(datos),
+          datasets: [{
+            label: 'Puntuación por inteligencia',
+            data: Object.values(datos),
+            backgroundColor: 'rgba(75, 192, 192, 0.6)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    </script>
+  {% endif %}
+
+  <hr>
+
+  {% for r in resultados %}
+    <div class="card my-3 p-3 {% if r.es_correcta %}border-success{% else %}border-danger{% endif %}">
+      <h5 class="mb-2">{{ r.pregunta }}</h5>
+      <p><strong>Tu(s) respuesta(s):</strong> {{ r.seleccionadas|join:", " }}</p>
+      <p><strong>Correcta(s):</strong> {{ r.correctas|join:", " }}</p>
+      <p class="{% if r.es_correcta %}text-success{% else %}text-danger{% endif %}">
+        {% if r.es_correcta %}✔ Correcto{% else %}✘ Incorrecto{% endif %}
+      </p>
+    </div>
+  {% endfor %}
+
+  <div class="text-center mt-4 d-flex justify-content-center gap-3">
+    {% if user.is_authenticated %}
+      <a href="/management_test/" class="btn btn-secondary">Volver a la página de tests</a>
+      <a href="/management_test/dashboard/" class="btn btn-primary">Ir al Dashboard</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

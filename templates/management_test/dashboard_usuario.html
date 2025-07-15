@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">Dashboard de {{ request.user.username }}</h2>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card text-white bg-primary mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Tests Realizados</h5>
+                    <p class="card-text display-6">{{ total_tests }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-success mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Promedio Aciertos</h5>
+                    <p class="card-text display-6">{{ promedio_aciertos|floatformat:1 }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card text-white bg-danger mb-3 shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Promedio Fallos</h5>
+                    <p class="card-text display-6">{{ promedio_fallos|floatformat:1 }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h4 class="mb-3">Preguntas más falladas</h4>
+    <ul class="list-group mb-4">
+        {% for p in preguntas_falladas %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ p.pregunta }}
+                <span class="badge bg-danger rounded-pill">Fallada {{ p.veces }} veces</span>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted">No hay errores aún.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'historial_tests' %}" class="btn btn-outline-primary">Ver historial</a>
+</div>
+{% endblock %}

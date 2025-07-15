@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if tipo_test == 'inteligencias' %}
+  <!-- Mostrar gráfico con resultados -->
+  <h2>Resultado del Test de Inteligencias Múltiples</h2>
+  <p>Inteligencia predominante: <strong>{{ predominante }}</strong></p>
+  <canvas id="grafico" width="400" height="200"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const datos = {{ resultados|safe }};
+    const ctx = document.getElementById('grafico').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(datos),
+            datasets: [{
+                label: 'Puntuación',
+                data: Object.values(datos),
+                backgroundColor: 'rgba(75, 192, 192, 0.6)'
+            }]
+        }
+    });
+  </script>
+
+{% else %}
+  <!-- Mostrar resultado tipo test clásico (ya lo tienes hecho) -->
+  <p class="lead">Aciertos: {{ aciertos }} / {{ total }}</p>
+
+  <ul class="list-group mt-4">
+    {% for r in resultados %}
+      <div class="card my-2 p-3 {% if r.es_correcta %}border-success{% else %}border-danger{% endif %}">
+        <h5>{{ r.pregunta }}</h5>
+        <p>Tu(s) respuesta(s): {{ r.seleccionadas|join:", " }}</p>
+        <p>Correcta(s): {{ r.correctas|join:", " }}</p>
+        <p class="{% if r.es_correcta %}text-success{% else %}text-danger{% endif %}">
+          {% if r.es_correcta %}✔ Correcto{% else %}✘ Incorrecto{% endif %}
+        </p>
+      </div>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% endblock %}

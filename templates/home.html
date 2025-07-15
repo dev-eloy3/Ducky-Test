@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inicio - Ducky{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row align-items-center">
+    <div class="col-md-6 text-center text-md-start">
+      <h1 class="display-4 fw-bold">
+        <span class="material-icons align-middle text-primary">school</span>
+        Bienvenido a Ducky
+      </h1>
+      <p class="lead mt-3">
+        Plataforma de CVs inteligentes, cursos online y ofertas de empleo. Diseñado para ayudarte a brillar profesionalmente.
+      </p>
+      <a href="{% url 'register' %}" class="btn btn-primary btn-lg mt-3">
+        <span class="material-icons align-middle">person_add</span>
+        Crear cuenta
+      </a>
+      <a href="{% url 'login' %}" class="btn btn-outline-secondary btn-lg mt-3 ms-2">
+        <span class="material-icons align-middle">login</span>
+        Iniciar sesión
+      </a>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="{% static 'img/ducky_welcome.svg' %}" alt="Ducky logo" class="img-fluid" style="max-height: 300px;">
+    </div>
+  </div>
+</div>
+{% endblock %}
