@@ -226,16 +226,13 @@ def dashboard_usuario(request):
     total_tests = resultados.count()
     promedio_aciertos = resultados.aggregate(prom=Avg('aciertos'))['prom']
     promedio_fallos = resultados.aggregate(prom=Avg('fallos'))['prom']
-
-    preguntas_falladas = PreguntaRespondida.objects.filter(
-        resultado__user=request.user, es_correcta=False
-    ).values('pregunta').annotate(veces=Count('id')).order_by('-veces')[:5]
-
+    test_por_data = resultados.order_by('-fecha')
+    
     context = {
         'total_tests': total_tests,
         'promedio_aciertos': promedio_aciertos or 0,
         'promedio_fallos': promedio_fallos or 0,
-        'preguntas_falladas': preguntas_falladas,
+        'test_por_data': test_por_data or 0,
     }
 
     return render(request, 'management_test/dashboard_usuario.html', context)
