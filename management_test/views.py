@@ -2,23 +2,19 @@
 import os
 import json
 import random
-from django.shortcuts import render, redirect
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ResultadoTest
 from django.utils.timezone import now
-from django.contrib.auth.decorators import login_required
 from django.db.models import Count, Avg
 from .models import PreguntaRespondida
-from django.shortcuts import get_object_or_404
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import ResultadoInteligencia
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,user_passes_test
 import json
 from django.db.models import Q
 from django.utils.timezone import now
-import json
-
+from .form import ComentarioForm
 
 
 def home(request):
@@ -316,3 +312,41 @@ def evaluar_test(request):
         })
 
     return redirect('tests:test')  # Redirige si entran por GET
+
+def es_profesor(user):
+    return user.groups.filter(name='Profesores').exists()
+
+
+@user_passes_test(es_profesor, login_url='/account/login/')
+@login_required
+def comentario_professor(request, tests_id):
+   test = get_object_or_404(ResultadoTest, id=tests_id)
+   if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+                comentario = form.save(commit=False)
+                comentario.professor = request.user
+                comentario.test = test
+                comentario.save()
+                return redirect('', test_id=test.id)
+        else:
+            form = ComentarioForm()
+        
+        return render(request, 'management_test/formulario_professor.html', {'form': form, 'test': test})
+   
+
+@user_passes_test(es_profesor)
+@login_required
+def dashboard(request):
+    resultados = ResultadoTest.objects.all()
+    test = resultados.count()
+    usuarios = resultados.select_related('user').order_by('-fecha')
+
+    datos = {
+        'tests': test,
+        'usuarios': usuarios
+    }
+    
+    return render(request, 'management_test/dashboard_professor.html', datos)
+
+

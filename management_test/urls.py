@@ -9,6 +9,6 @@ urlpatterns = [
     path('historial/', views.historial_tests, name='historial_tests'),
     path('dashboard/', views.dashboard_usuario, name='dashboard_usuario'),  # <- nuevo
     path('historial/<int:test_id>/', views.detalle_resultado_test, name='detalle_resultado_test'),
-
-
+    path('formulario_professor/<int:tests_id>/', views.comentario_professor, name='comentarios'),
+    path('dashboard_professor/', views.dashboard, name='dashboard_profe'),
 ]

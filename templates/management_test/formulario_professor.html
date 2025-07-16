@@ -1,0 +1,7 @@
+<h2>Comentar sobre el test: {{ test.test_title }}</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Guardar comentario</button>
+</form>

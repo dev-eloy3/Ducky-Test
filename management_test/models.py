@@ -2,7 +2,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 
-User = get_user_model()  # compatible con tu modelo User personalizado
+User = get_user_model()  
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=100)
@@ -52,10 +52,15 @@ class ResultadoTest(models.Model):
     total_preguntas = models.PositiveIntegerField()
     aciertos = models.PositiveIntegerField()
     fallos = models.PositiveIntegerField()
-    detalle = models.JSONField()  # aquí se guarda todo el resumen pregunta/respuesta
-
+    detalle = models.JSONField()
+   
     def __str__(self):
-        return f'{self.user.username} - {self.test_title} ({self.fecha.strftime("%Y-%m-%d")})'  
+        return f'{self.user.username} - {self.test_title} ({self.fecha.strftime("%Y-%m-%d")})' 
+    
+class ComentariosProfessores(models.Model):
+    professor = models.ForeignKey(User, on_delete=models.CASCADE)
+    comentario = models.TextField()
+    test = models.OneToOneField(ResultadoTest, on_delete=models.CASCADE)
     
 class PreguntaRespondida(models.Model):
     resultado = models.ForeignKey(ResultadoTest, on_delete=models.CASCADE, related_name='respuestas')
