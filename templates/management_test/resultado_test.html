@@ -7,24 +7,7 @@
   <p>Inteligencia predominante: <strong>{{ predominante }}</strong></p>
   <canvas id="grafico" width="400" height="200"></canvas>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script>
-    const datos = {{ resultados|safe }};
-    const ctx = document.getElementById('grafico').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: Object.keys(datos),
-            datasets: [{
-                label: 'Puntuación',
-                data: Object.values(datos),
-                backgroundColor: 'rgba(75, 192, 192, 0.6)'
-            }]
-        }
-    });
-  </script>
-
-{% else %}
+  {% else %}
   <!-- Mostrar resultado tipo test clásico (ya lo tienes hecho) -->
   <p class="lead">Aciertos: {{ aciertos }} / {{ total }}</p>
 
@@ -41,5 +24,22 @@
     {% endfor %}
   </ul>
 {% endif %}
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const datos = {{ resultados | safe }};
+    const ctx = document.getElementById('grafico').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: Object.keys(datos),
+            datasets: [{
+                label: 'Puntuación',
+                data: Object.values(datos),
+                backgroundColor: 'rgba(75, 192, 192, 0.6)'
+            }]
+        }
+    });
+  </script>
+
 
 {% endblock %}

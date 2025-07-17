@@ -1,15 +1,15 @@
+{% extends 'base.html' %}
+
 {% block content %}
 <div class="row mb-4">
         <div class="col-md-4">
             <div class="card text-white bg-primary mb-3 shadow-sm">
                 <div class="card-body">
                     <h5 class="card-title">Tests Realizados</h5>
-                    <p class="card-text display-6">{{ usuarios  }}</p>
+                    <p class="card-text display-6">{{ test  }}</p>
                 </div>
             </div>
         </div>
-
-<div class="table-responsive shadow rounded">
       <table class="table table-hover table-bordered table-striped text-center align-middle mb-0">
         <thead class="table-dark">
           <tr>
@@ -17,7 +17,10 @@
             <th scope="col">Fecha</th>
              <th scope="col">Titulo</th>
             <th scope="col">Aciertos</th>
-             <th scope="col">Fallos</th>
+            <th scope="col">Fallos</th>
+            <th scope="col">Comentario</th>
+            <th scope="col">Comentado</th>
+            <th scope="col">Detalles</th>
            </tr>
         </thead>
         <tbody>
@@ -25,10 +28,24 @@
           <tr>
             <td>{{ usuarios.user }}</td>
             <td>{{ usuarios.fecha | date:"d/m/Y H:i"}} </td>
-            <td class="fw-semibold">{{ test_por_data.test_title }}</td>
+            <td class="fw-semibold">{{ usuarios.test_title }}</td>
             <td>{{ usuarios.aciertos }}</td>
             <td>{{ usuarios.fallos }}</td>
-            <a href="{% url ' comentarios' %}">Comentario</a>
+            <td>
+              {% if usuarios.tiene_comentario %}
+                <a href="{% url 'modificar' id=usuarios.id %}" class="btn btn-warning">Comentario</a>
+              {% else %}
+                <a href="{% url 'comentarios' tests_id=usuarios.id %}" class="btn btn-success">Comentario</a>
+              {% endif %}
+            </td>
+            <td>
+              {% if usuarios.tiene_comentario %}
+              <span style="color: green;"> Comentado</span>
+              {% else %}
+              <span style="color: red;"> Sin comentario</span>
+              {% endif %}
+            </td>
+            <td><a href="{% url 'detalle_resultado_test' usuarios.id %}" class="btn btn-outline-primary btn-sm">Ver</a></td>
           </tr>
           {% empty %}
           <tr>
@@ -37,5 +54,4 @@
           {% endfor %}
         </tbody>
       </table>
-    </div>
 {% endblock %}

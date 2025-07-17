@@ -1,20 +1,21 @@
-# views.py
+# Python estándar
 import os
 import json
 import random
+
+# Django
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import ResultadoTest
-from django.utils.timezone import now
-from django.db.models import Count, Avg
-from .models import PreguntaRespondida
 from django.shortcuts import get_object_or_404, render, redirect
-from .models import ResultadoInteligencia
-from django.contrib.auth.decorators import login_required,user_passes_test
-import json
-from django.db.models import Q
 from django.utils.timezone import now
-from .form import ComentarioForm
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Count, Avg, Q
+from django.contrib.auth.models import Group
+
+
+# App local
+from .models import ResultadoTest, PreguntaRespondida, ResultadoInteligencia, ComentariosProfessores
+from .form import  ComentarioForm
 
 
 def home(request):
@@ -313,14 +314,10 @@ def evaluar_test(request):
 
     return redirect('tests:test')  # Redirige si entran por GET
 
-def es_profesor(user):
-    return user.groups.filter(name='Profesores').exists()
 
-
-@user_passes_test(es_profesor, login_url='/account/login/')
-@login_required
 def comentario_professor(request, tests_id):
    test = get_object_or_404(ResultadoTest, id=tests_id)
+   
    if request.method == 'POST':
         form = ComentarioForm(request.POST)
         if form.is_valid():
@@ -328,25 +325,44 @@ def comentario_professor(request, tests_id):
                 comentario.professor = request.user
                 comentario.test = test
                 comentario.save()
-                return redirect('', test_id=test.id)
-        else:
-            form = ComentarioForm()
+                return redirect('dashboard_profe')
+   else:
+        form = ComentarioForm()
         
-        return render(request, 'management_test/formulario_professor.html', {'form': form, 'test': test})
+   return render(request, 'management_test/formulario_professor.html', {'form': form, 'test': test})
    
-
-@user_passes_test(es_profesor)
 @login_required
-def dashboard(request):
+def profesor_vista(request):
     resultados = ResultadoTest.objects.all()
     test = resultados.count()
     usuarios = resultados.select_related('user').order_by('-fecha')
 
+    for resultado in usuarios:
+        resultado.tiene_comentario = ComentariosProfessores.objects.filter(test=resultado).exists()
+
     datos = {
-        'tests': test,
+        'test': test,
         'usuarios': usuarios
     }
     
     return render(request, 'management_test/dashboard_professor.html', datos)
+
+@login_required
+def modificar_comentario(request, id):
+    comentario = get_object_or_404(ComentariosProfessores, test_id=id)
+    
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST, instance=comentario)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard_profe')
+    else:
+        form = ComentarioForm(instance=comentario)
+
+    contexto = {
+        'form': form,
+        'comentario': comentario
+    }
+    return render(request, 'management_test/formulario_professor.html', contexto)
 
 
