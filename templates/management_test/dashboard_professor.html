@@ -17,25 +17,27 @@
               Alumnos
               <br>
               <form method="GET" action="{% url 'dashboard_profe' %}">
-              <select name="usuario" class="form-label" onchange="this.form.submit()">
-                <option value="">Todos los Alumnos</option>
-                {% for nombre in usuarios %}
-                <option value="{{ nombre }}" {% if nombre == usuario_filtrado %}selected{% endif %}>
-                  {{ nombre }}
-                </option>
-                {% endfor %}
-              </select>
+                <select name="usuarios" class="form-label" onchange="this.form.submit()">
+                  <option>Filtrar</option>
+                  {% for nombre in nombres %}
+                    <option value="{{ nombre }}" {% if nombre == usuarios %}selected{% endif %}>{{ nombre }}</option>
+                  {% endfor %}
+                  <option value="">Todos los Alumnos</option>
+               </select>
+             </form>
             </th>
             <th scope="col">Fecha</th>
              <th scope="col">
               Titulo
               <br>
               <form method="GET" action="{% url 'dashboard_profe' %}">
+                
                 <select name="titulo" id="titulo" class="form-label" onchange="this.form.submit()">
-                   <option value="">Ver todos</option>
+                  <option>Filtrar</option>
                   {% for titulo in titulos %}
                       <option value="{{ titulo }}" class="form-select" {% if titulo == titulo_filtrado %}selected{% endif %}>{{ titulo }}</option>
                   {% endfor %}
+                   <option value="">Ver todos</option>
                   </select>
               </form>   
               </th>

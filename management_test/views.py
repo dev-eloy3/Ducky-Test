@@ -334,15 +334,15 @@ def comentario_professor(request, tests_id):
 @login_required
 def profesor_vista(request):
     titulos= request.GET.get('titulo')
-    usuario = request.GET.get('nombre')
+    usuarios = request.GET.get('usuarios')
 
     todos_los_titulos = ResultadoTest.objects.values_list('test_title', flat=True).distinct()
     test = ResultadoTest.objects.count()
     test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
-    usuarios = ResultadoTest.objects.select_related('user').values_list('user__username', flat=True).distinct()
+    nombres = ResultadoTest.objects.select_related('user').values_list('user__username', flat=True).distinct()
 
-    if usuario:
-        usuarios = usuarios.filter(user=usuario)
+    if usuarios:
+        test_usuarios = test_usuarios.filter(user__username=usuarios)
 
     if titulos:
        test_usuarios = test_usuarios.filter(test_title=titulos)
@@ -356,7 +356,8 @@ def profesor_vista(request):
         'test_usuarios': test_usuarios,
         'titulos': todos_los_titulos,
         'titulos_filtrados': titulos,
-        'usuarios': usuarios
+        'nombres': nombres,
+        'usuarios': usuarios,
     }
     
     return render(request, 'management_test/dashboard_professor.html', datos)

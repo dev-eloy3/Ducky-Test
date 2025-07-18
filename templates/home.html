@@ -23,6 +23,11 @@
         <span class="material-icons align-middle">login</span>
         Iniciar sesión
       </a>
+      {% else %}
+      <a href="{% url 'dashboard_profe' %}" class="btn btn-primary btn-lg mt-3">
+        <span class="material-icons align-middle">person_add</span>
+        Professores
+      </a>
       {% endif %}
     </div>
     <div class="col-md-6 text-center">
