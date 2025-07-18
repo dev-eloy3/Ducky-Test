@@ -14,7 +14,7 @@ from django.contrib.auth.models import Group
 
 
 # App local
-from .models import ResultadoTest, PreguntaRespondida, ResultadoInteligencia, ComentariosProfessores
+from .models import ResultadoTest, PreguntaRespondida, ResultadoInteligencia, ComentariosProfessores, Test
 from .form import  ComentarioForm
 
 
@@ -333,15 +333,29 @@ def comentario_professor(request, tests_id):
    
 @login_required
 def profesor_vista(request):
-    resultados = ResultadoTest.objects.all()
-    test = resultados.count()
-    usuarios = resultados.select_related('user').order_by('-fecha')
+    titulos= request.GET.get('titulo')
+    usuario = request.GET.get('nombre')
 
-    for resultado in usuarios:
+    todos_los_titulos = ResultadoTest.objects.values_list('test_title', flat=True).distinct()
+    test = ResultadoTest.objects.count()
+    test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
+    usuarios = ResultadoTest.objects.select_related('user').values_list('user__username', flat=True).distinct()
+
+    if usuario:
+        usuarios = usuarios.filter(user=usuario)
+
+    if titulos:
+       test_usuarios = test_usuarios.filter(test_title=titulos)
+        
+    
+    for resultado in test_usuarios:
         resultado.tiene_comentario = ComentariosProfessores.objects.filter(test=resultado).exists()
 
     datos = {
         'test': test,
+        'test_usuarios': test_usuarios,
+        'titulos': todos_los_titulos,
+        'titulos_filtrados': titulos,
         'usuarios': usuarios
     }
     

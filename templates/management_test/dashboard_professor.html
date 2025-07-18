@@ -13,39 +13,54 @@
       <table class="table table-hover table-bordered table-striped text-center align-middle mb-0">
         <thead class="table-dark">
           <tr>
-            <th scope="col">Usuario</th>
+            <th scope="col">
+              Alumnos
+              <br>
+              <form method="GET" action="{% url 'dashboard_profe' %}">
+              <select name="usuario" class="form-label" onchange="this.form.submit()">
+                <option value="">Todos los Alumnos</option>
+                {% for nombre in usuarios %}
+                <option value="{{ nombre }}" {% if nombre == usuario_filtrado %}selected{% endif %}>
+                  {{ nombre }}
+                </option>
+                {% endfor %}
+              </select>
+            </th>
             <th scope="col">Fecha</th>
-             <th scope="col">Titulo</th>
+             <th scope="col">
+              Titulo
+              <br>
+              <form method="GET" action="{% url 'dashboard_profe' %}">
+                <select name="titulo" id="titulo" class="form-label" onchange="this.form.submit()">
+                   <option value="">Ver todos</option>
+                  {% for titulo in titulos %}
+                      <option value="{{ titulo }}" class="form-select" {% if titulo == titulo_filtrado %}selected{% endif %}>{{ titulo }}</option>
+                  {% endfor %}
+                  </select>
+              </form>   
+              </th>
             <th scope="col">Aciertos</th>
             <th scope="col">Fallos</th>
             <th scope="col">Comentario</th>
-            <th scope="col">Comentado</th>
             <th scope="col">Detalles</th>
            </tr>
         </thead>
         <tbody>
-          {% for usuarios in usuarios %}
+          {% for test_usuarios in test_usuarios %}
           <tr>
-            <td>{{ usuarios.user }}</td>
-            <td>{{ usuarios.fecha | date:"d/m/Y H:i"}} </td>
-            <td class="fw-semibold">{{ usuarios.test_title }}</td>
-            <td>{{ usuarios.aciertos }}</td>
-            <td>{{ usuarios.fallos }}</td>
+            <td>{{ test_usuarios.user }}</td>
+            <td>{{ test_usuarios.fecha | date:"d/m/Y H:i"}} </td>
+            <td class="fw-semibold">{{ test_usuarios.test_title }}</td>
+            <td>{{ test_usuarios.aciertos }}</td>
+            <td>{{ test_usuarios.fallos }}</td>
             <td>
-              {% if usuarios.tiene_comentario %}
-                <a href="{% url 'modificar' id=usuarios.id %}" class="btn btn-warning">Comentario</a>
+              {% if test_usuarios.tiene_comentario %}
+                <a href="{% url 'modificar' id=test_usuarios.id %}" class="btn btn-success">Comentado</a>
               {% else %}
-                <a href="{% url 'comentarios' tests_id=usuarios.id %}" class="btn btn-success">Comentario</a>
+                <a href="{% url 'comentarios' tests_id=test_usuarios.id %}" class="btn btn-danger">Sin Comentario</a>
               {% endif %}
             </td>
-            <td>
-              {% if usuarios.tiene_comentario %}
-              <span style="color: green;"> Comentado</span>
-              {% else %}
-              <span style="color: red;"> Sin comentario</span>
-              {% endif %}
-            </td>
-            <td><a href="{% url 'detalle_resultado_test' usuarios.id %}" class="btn btn-outline-primary btn-sm">Ver</a></td>
+            <td><a href="{% url 'detalle_resultado_test' test_usuarios.id %}" class="btn btn-outline-primary btn-sm">Ver</a></td>
           </tr>
           {% empty %}
           <tr>
