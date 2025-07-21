@@ -14,7 +14,7 @@ from django.contrib.auth.models import Group
 
 
 # App local
-from .models import ResultadoTest, PreguntaRespondida, ResultadoInteligencia, ComentariosProfessores, Test
+from .models import ResultadoTest, PreguntaRespondida, ComentariosProfessores
 from .form import  ComentarioForm
 
 
@@ -336,7 +336,6 @@ def profesor_vista(request):
     titulos= request.GET.get('titulo')
     usuarios = request.GET.get('usuarios')
 
-
     test = ResultadoTest.objects.count()
     test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
     nombres = ResultadoTest.objects.select_related('user').values_list('user__username', flat=True).distinct()
@@ -359,7 +358,7 @@ def profesor_vista(request):
         'test': test,
         'test_usuarios': test_usuarios,
         'titulos': todos_los_titulos,
-        'titulos_filtrados': titulos,
+        'titulos_filtrado': titulos,
         'nombres': nombres,
         'usuarios': usuarios,
     }
