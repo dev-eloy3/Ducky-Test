@@ -15,10 +15,8 @@
             </p>
 
             {% if test.filename %}
-              {% if test.filename == "inteligencias_multiples_categorizado_final.json" %}
-                <!-- PASAMOS filename como parámetro a la URL -->
+              {% if "inteligencias" in test.filename %}
                 <a href="{% url 'seleccionar_categorias' filename=test.filename %}" class="btn btn-primary mt-auto">Hacer test</a>
-
               {% else %}
                 <a href="{% url 'realizar_test' test.filename %}" class="btn btn-primary mt-auto">Hacer test</a>
               {% endif %}
@@ -36,4 +34,3 @@
     {% endfor %}
   </div>
 {% endblock %}
-

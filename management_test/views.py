@@ -12,9 +12,6 @@ from .form import ComentarioForm
 from .models import PreguntaRespondida, ResultadoInteligencia, ResultadoTest, ComentariosProfessores
 
 
-
-
-
 def es_profesor(user):
     return user.groups.filter(name='professores').exists()
 
@@ -40,95 +37,8 @@ def home(request):
     return render(request, 'management_test/tests.html', {'tests': tests})
 
 
-@login_required
-def realizar_test(request, filename):
-    ruta_test = os.path.join(settings.BASE_DIR, "test", filename)
 
-    if request.method == "GET":
-        
-        key_preguntas = "preguntas_inteligencias" if "inteligencias_multiples" in filename else "preguntas_test"
 
-        if key_preguntas not in request.session:
-            with open(ruta_test, encoding="utf-8") as f:
-                contenido = json.load(f)
-
-            if "inteligencias_multiples" in filename:
-                categorias = request.session.get("categorias_seleccionadas", [])
-                if not categorias:
-                    return redirect("seleccionar_categorias", filename=filename)
-
-                preguntas = seleccionar_preguntas_equilibradas_por_categorias(
-                    contenido, categorias_seleccionadas=categorias
-                )
-            else:
-                preguntas_totales = contenido.get("questions", [])
-                preguntas = random.sample(preguntas_totales, min(20, len(preguntas_totales)))
-
-            request.session[key_preguntas] = preguntas
-            request.session["filename"] = filename
-            request.session["respuestas"] = []
-            request.session.modified = True
-            return redirect(f"{request.path}?pregunta=0")
-
-        preguntas = request.session.get(key_preguntas, [])
-        respuestas = request.session.get("respuestas", [])
-        pregunta_actual = int(request.GET.get("pregunta", 0))
-
-        if pregunta_actual >= len(preguntas):
-            if "inteligencias_multiples" in filename:
-                return redirect("resultado_test_inteligencias")
-            else:
-                return redirect("resultado_test")
-
-        
-        pregunta_actual_data = preguntas[pregunta_actual].copy()
-        pregunta_actual_data["options"] = random.sample(
-            pregunta_actual_data["options"],
-            len(pregunta_actual_data["options"])
-        )
-
-        return render(request, "management_test/realizar_test.html", {
-            "pregunta": pregunta_actual_data,
-            "numero": pregunta_actual + 1,
-            "total": len(preguntas),
-            "respuestas": respuestas,
-            "enumeracion": list(range(len(preguntas))),
-            "test": {
-                "title": "Test de Inteligencias Múltiples" if "inteligencias_multiples" in filename else "Test",
-                "description": "Evaluación basada en múltiples inteligencias." if "inteligencias_multiples" in filename else "",
-                "filename": filename,
-            },
-            "barra_estado": [
-                {
-                    "numero": idx + 1,
-                    "estado": 'respondida' if idx < len(respuestas) and respuestas[idx] else 'no_respondida',
-                    "actual": (idx == pregunta_actual)
-                } for idx in range(len(preguntas))
-            ]
-        })
-
-    # POST - guardar respuesta
-    if request.method == "POST":
-        respuesta = request.POST.getlist("respuesta")
-        numero = int(request.GET.get("pregunta", 0))
-
-        respuestas = request.session.get("respuestas", [])
-        while len(respuestas) <= numero:
-            respuestas.append([])
-
-        respuestas[numero] = respuesta
-        request.session["respuestas"] = respuestas
-        request.session.modified = True
-
-        key_preguntas = "preguntas_inteligencias" if "inteligencias_multiples" in filename else "preguntas_test"
-
-        if "finalizar" in request.POST or numero + 1 >= len(request.session[key_preguntas]):
-            if "inteligencias_multiples" in filename:
-                return redirect("resultado_test_inteligencias")
-            else:
-                return redirect("resultado_test")
-        else:
-            return redirect(f"{request.path}?pregunta={numero + 1}")
 @login_required
 def historial_tests(request):
     titulo_query = request.GET.get('titulo', '')
@@ -544,6 +454,125 @@ def resultado_test_inteligencias(request):
     }
 
     return render(request, 'management_test/resultado_test.html', context)
+@login_required
+def realizar_test(request, filename):
+    ruta_test = os.path.join(settings.BASE_DIR, "test", filename)
+
+    if request.method == "GET":
+        key_preguntas = "preguntas_inteligencias" if "inteligencias" in filename.lower() else "preguntas_test"
+
+        # Cargar preguntas por primera vez
+        if key_preguntas not in request.session:
+            with open(ruta_test, encoding="utf-8") as f:
+                contenido = json.load(f)
+
+            if "inteligencias" in filename.lower():
+                categorias = request.session.get("categorias_seleccionadas", [])
+                if not categorias:
+                    return redirect("seleccionar_categorias", filename=filename)
+
+                preguntas = seleccionar_preguntas_equilibradas_por_categorias(
+                    contenido, categorias_seleccionadas=categorias
+                )
+            else:
+                preguntas_totales = contenido.get("questions", [])
+                preguntas = random.sample(preguntas_totales, min(20, len(preguntas_totales)))
+
+            request.session[key_preguntas] = preguntas
+            request.session["filename"] = filename
+            request.session["respuestas"] = []
+            request.session.modified = True
+            return redirect(f"{request.path}?pregunta=0")
+
+        # Obtener estado actual
+        preguntas = request.session.get(key_preguntas, [])
+        respuestas = request.session.get("respuestas", [])
+        pregunta_actual = int(request.GET.get("pregunta", 0))
+
+        if pregunta_actual >= len(preguntas):
+            if "inteligencias" in filename.lower():
+                return redirect("resultado_test_inteligencias")
+            else:
+                return redirect("resultado_test")
+
+        # Preparar la pregunta actual con mezcla de opciones
+        pregunta_data = preguntas[pregunta_actual].copy()
+        opciones = pregunta_data.get("options", [])
+        opciones_mezcladas = random.sample(opciones, len(opciones))
+
+        # Detectar si hay múltiples respuestas correctas
+        multiple_correctas = sum(1 for opcion in opciones if opcion.get("ok")) > 1
+
+        pregunta_data["options"] = opciones_mezcladas
+        pregunta_data["multiple_correctas"] = multiple_correctas
+
+        return render(request, "management_test/realizar_test.html", {
+            "pregunta": pregunta_data,
+            "numero": pregunta_actual + 1,
+            "total": len(preguntas),
+            "respuestas": respuestas,
+            "enumeracion": list(range(len(preguntas))),
+            "test": {
+                "title": "Test de Inteligencias Múltiples" if "inteligencias" in filename.lower() else "Test",
+                "description": "Evaluación basada en múltiples inteligencias." if "inteligencias" in filename.lower() else "",
+                "filename": filename,
+            },
+            "barra_estado": [
+                {
+                    "numero": idx + 1,
+                    "estado": 'respondida' if idx < len(respuestas) and respuestas[idx] else 'no_respondida',
+                    "actual": (idx == pregunta_actual)
+                } for idx in range(len(preguntas))
+            ]
+        })
+
+    # POST – Guardar respuesta del usuario
+    if request.method == "POST":
+        respuesta = request.POST.getlist("respuesta")
+        numero = int(request.GET.get("pregunta", 0))
+
+        respuestas = request.session.get("respuestas", [])
+        while len(respuestas) <= numero:
+            respuestas.append([])
+
+        respuestas[numero] = respuesta
+        request.session["respuestas"] = respuestas
+        request.session.modified = True
+
+        key_preguntas = "preguntas_inteligencias" if "inteligencias" in filename.lower() else "preguntas_test"
+        siguiente_pregunta = numero + 1
+
+        if "finalizar" in request.POST or siguiente_pregunta >= len(request.session[key_preguntas]):
+            if "inteligencias" in filename.lower():
+                return redirect("resultado_test_inteligencias")
+            else:
+                return redirect("resultado_test")
+        else:
+            return redirect(f"{request.path}?pregunta={siguiente_pregunta}")
+
+
+    # POST - guardar respuesta
+    if request.method == "POST":
+        respuesta = request.POST.getlist("respuesta")
+        numero = int(request.GET.get("pregunta", 0))
+
+        respuestas = request.session.get("respuestas", [])
+        while len(respuestas) <= numero:
+            respuestas.append([])
+
+        respuestas[numero] = respuesta
+        request.session["respuestas"] = respuestas
+        request.session.modified = True
+
+        key_preguntas = "preguntas_inteligencias" if "inteligencias_multiples" in filename else "preguntas_test"
+
+        if "finalizar" in request.POST or numero + 1 >= len(request.session[key_preguntas]):
+            if "inteligencias_multiples" in filename:
+                return redirect("resultado_test_inteligencias")
+            else:
+                return redirect("resultado_test")
+        else:
+            return redirect(f"{request.path}?pregunta={numero + 1}")
 
 
 @login_required

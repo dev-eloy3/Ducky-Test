@@ -4,7 +4,12 @@
 {% block content %}
 <div class="container mt-4">
   <h2>{{ test.title }}</h2>
-  
+  {% if pregunta.multiple_correctas %}
+  <div class="alert alert-info">Esta pregunta admite <strong>varias respuestas correctas</strong>.</div>
+{% else %}
+  <div class="alert alert-warning">Esta pregunta tiene <strong>solo una respuesta correcta</strong>.</div>
+{% endif %}
+
   <p class="text-muted">Pregunta {{ numero }} de {{ total }}</p>
   <div class="mb-3 d-flex flex-wrap justify-content-center gap-2">
     {% for item in barra_estado %}
