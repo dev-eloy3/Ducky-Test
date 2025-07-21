@@ -31,7 +31,7 @@
               Titulo
               <br>
               <form method="GET" action="{% url 'dashboard_profe' %}">
-                
+                 <input type="hidden" name="usuarios" value="{{ usuarios }}">
                 <select name="titulo" id="titulo" class="form-label" onchange="this.form.submit()">
                   <option>Filtrar</option>
                   {% for titulo in titulos %}

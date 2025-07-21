@@ -336,17 +336,21 @@ def profesor_vista(request):
     titulos= request.GET.get('titulo')
     usuarios = request.GET.get('usuarios')
 
-    todos_los_titulos = ResultadoTest.objects.values_list('test_title', flat=True).distinct()
+
     test = ResultadoTest.objects.count()
     test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
     nombres = ResultadoTest.objects.select_related('user').values_list('user__username', flat=True).distinct()
 
     if usuarios:
-        test_usuarios = test_usuarios.filter(user__username=usuarios)
+        test_usuarios = test_usuarios.filter(user__username=usuarios) 
 
     if titulos:
        test_usuarios = test_usuarios.filter(test_title=titulos)
-        
+
+    if usuarios:
+        todos_los_titulos = ResultadoTest.objects.filter(user__username=usuarios).values_list('test_title', flat=True).distinct()
+    else:
+        todos_los_titulos = ResultadoTest.objects.values_list('test_title', flat=True).distinct()
     
     for resultado in test_usuarios:
         resultado.tiene_comentario = ComentariosProfessores.objects.filter(test=resultado).exists()
