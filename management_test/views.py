@@ -288,33 +288,6 @@ MAPEO_INTELIGENCIA = {
     # … continúa hasta 100
 }
 
-@login_required
-def evaluar_test(request):
-    if request.method == 'POST':
-        respuestas = request.POST  # {'p1': '3', 'p2': '5', ...}
-        totales = {intel: 0 for intel in INTELIGENCIAS}
-
-        for clave, valor in respuestas.items():
-            if clave.startswith('p'):
-                id_pregunta = int(clave[1:])
-                intel = MAPEO_INTELIGENCIA.get(id_pregunta)
-                if intel:
-                    totales[intel] += int(valor)
-
-        # Guardar resultado
-        resultado = ResultadoInteligencia.objects.create(
-            usuario=request.user,
-            resultados=totales
-        )
-
-        return render(request, 'tests/resultados.html', {
-            'resultados': totales,
-            'predominante': resultado.inteligencia_predominante()
-        })
-
-    return redirect('tests:test')  # Redirige si entran por GET
-
-
 def comentario_professor(request, tests_id):
    test = get_object_or_404(ResultadoTest, id=tests_id)
    
