@@ -236,7 +236,7 @@ def dashboard_usuario(request):
 
 @login_required
 def detalle_resultado_test(request, test_id):
-    resultado = get_object_or_404(ResultadoTest, id=test_id, user=request.user)
+    resultado = get_object_or_404(ResultadoTest, id=test_id)
     detalle_json = resultado.detalle  # campo tipo JSONField
     resultados = []
     datos_grafico = []

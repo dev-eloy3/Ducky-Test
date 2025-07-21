@@ -31,7 +31,7 @@
               Titulo
               <br>
               <form method="GET" action="{% url 'dashboard_profe' %}">
-                <input type="hidden" name="usuarios" value="{{ usuarios }}">
+                  <input type="hidden" name="usuarios" value="{{ usuarios }}">
                 <select name="titulo" id="titulo" class="form-label" onchange="this.form.submit()">
                   <option>Filtrar</option>
                   {% for titulo in titulos %}
@@ -39,7 +39,6 @@
                   {% endfor %}
                    <option value="">Ver todos</option>
                   </select>
-                  <input type="hidden" name="usuarios" value="{{ titulo }}">
               </form>   
               </th>
             <th scope="col">Aciertos</th>
@@ -49,21 +48,21 @@
            </tr>
         </thead>
         <tbody>
-          {% for test_usuarios in test_usuarios %}
+          {% for test_usuario in test_usuarios %}
           <tr>
-            <td>{{ test_usuarios.user }}</td>
-            <td>{{ test_usuarios.fecha | date:"d/m/Y H:i"}} </td>
-            <td class="fw-semibold">{{ test_usuarios.test_title }}</td>
-            <td>{{ test_usuarios.aciertos }}</td>
-            <td>{{ test_usuarios.fallos }}</td>
+            <td>{{ test_usuario.user }}</td>
+            <td>{{ test_usuario.fecha | date:"d/m/Y H:i"}} </td>
+            <td class="fw-semibold">{{ test_usuario.test_title }}</td>
+            <td>{{ test_usuario.aciertos }}</td>
+            <td>{{ test_usuario.fallos }}</td>
             <td>
-              {% if test_usuarios.tiene_comentario %}
-                <a href="{% url 'modificar' id=test_usuarios.id %}" class="btn btn-success">Comentado</a>
+              {% if test_usuario.tiene_comentario %}
+                <a href="{% url 'modificar' id=test_usuario.id %}" class="btn btn-success">Comentado</a>
               {% else %}
-                <a href="{% url 'comentarios' tests_id=test_usuarios.id %}" class="btn btn-danger">Sin Comentario</a>
+                <a href="{% url 'comentarios' tests_id=test_usuario.id %}" class="btn btn-danger">Sin Comentario</a>
               {% endif %}
             </td>
-            <td><a href="{% url 'detalle_resultado_test' test_usuarios.id %}" class="btn btn-outline-primary btn-sm">Ver</a></td>
+            <td><a href="{% url 'detalle_resultado_test' test_usuario.id %}" class="btn btn-outline-primary btn-sm">Ver</a></td>
           </tr>
           {% empty %}
           <tr>
