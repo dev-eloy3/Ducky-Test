@@ -1,66 +1,139 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <div class="container mt-4">
   <h2>Resultado del Test: {{ resultado.test_title }}</h2>
   <p><strong>Fecha:</strong> {{ resultado.fecha|date:"d/m/Y H:i" }}</p>
   <p class="lead">Aciertos: {{ aciertos }} / {{ total }}</p>
 
-  <p>DEBUG grafico_datos: {{ grafico_datos|default:"NO HAY DATOS" }}</p>
+  <hr class="my-4">
+  <h4>Resumen global de respuestas</h4>
+  <div class="d-flex justify-content-center">
+    <div style="width: 300px;">
+      <canvas id="graficoBarra" class="img-fluid"></canvas>
+    </div>
+  </div>
 
-  {% if grafico_datos %}
-    <hr>
-    <h4 class="mt-4">Inteligencia predominante: <strong>{{ predominante }}</strong></h4>
-    <canvas id="grafico" width="400" height="200"></canvas>
-    {{ grafico_datos|json_script:"grafico-datos" }}
+  {% if tipo_test == 'inteligencias' and aciertos_por_categoria %}
+  <hr class="my-4">
+  <h4>Aciertos por categoría</h4>
+  <div class="d-flex justify-content-center">
+    <div style="width: 600px;">
+      <canvas id="graficoCategorias"></canvas>
+    </div>
+  </div>
+  {% endif %}
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-      const datos = JSON.parse(document.getElementById('grafico-datos').textContent);
-      const ctx = document.getElementById('grafico').getContext('2d');
-      console.log(datos);
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: Object.keys(datos),
-          datasets: [{
-            label: 'Puntuación por inteligencia',
-            data: Object.values(datos),
-            backgroundColor: 'rgba(75, 192, 192, 0.6)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-          }]
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const correctas = {{ aciertos }};
+    const total = {{ total }};
+
+    // Gráfico total de aciertos
+    const ctxBarra = document.getElementById('graficoBarra').getContext('2d');
+    new Chart(ctxBarra, {
+      type: 'bar',
+      data: {
+        labels: ['Aciertos'],
+        datasets: [{
+          label: 'Total de Aciertos',
+          data: [correctas],
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: {
+            title: { display: true, text: 'Resultado' },
+            ticks: { font: { size: 14 } }
+          },
+          y: {
+            beginAtZero: true,
+            max: total,
+            ticks: { stepSize: 1, precision: 0 },
+            title: { display: true, text: 'Número de aciertos' }
+          }
         },
-        options: {
-          responsive: true,
-          scales: {
-            y: {
-              beginAtZero: true
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const value = context.raw;
+                const porcentaje = ((value / total) * 100).toFixed(1);
+                return `${value} aciertos (${porcentaje}%)`;
+              }
             }
           }
         }
-      });
-    </script>
-  {% endif %}
+      }
+    });
 
-  <hr>
+    {% if tipo_test == 'inteligencias' and aciertos_por_categoria %}
+    // Gráfico de aciertos por categoría
+    const datosCategorias = JSON.parse('{{ aciertos_por_categoria|escapejs }}');
+    const categorias = Object.keys(datosCategorias);
+    const aciertosCat = Object.values(datosCategorias);
 
-  {% for r in resultados %}
-    <div class="card my-3 p-3 {% if r.es_correcta %}border-success{% else %}border-danger{% endif %}">
-      <h5 class="mb-2">{{ r.pregunta }}</h5>
-      <p><strong>Tu(s) respuesta(s):</strong> {{ r.seleccionadas|join:", " }}</p>
-      <p><strong>Correcta(s):</strong> {{ r.correctas|join:", " }}</p>
-      <p class="{% if r.es_correcta %}text-success{% else %}text-danger{% endif %}">
-        {% if r.es_correcta %}✔ Correcto{% else %}✘ Incorrecto{% endif %}
-      </p>
-    </div>
-  {% endfor %}
+    const ctxCategorias = document.getElementById('graficoCategorias').getContext('2d');
+    new Chart(ctxCategorias, {
+      type: 'bar',
+      data: {
+        labels: categorias,
+        datasets: [{
+          label: 'Aciertos por categoría',
+          data: aciertosCat,
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1,
+          borderRadius: 5,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true,
+            precision: 0,
+            title: { display: true, text: 'Cantidad de aciertos' }
+          },
+          x: {
+            title: { display: true, text: 'Categorías' }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: true }
+        }
+      }
+    });
+    {% endif %}
+  </script>
+
+  <hr class="my-4">
+  <h4>Detalles de tus respuestas</h4>
+  <ul class="list-group mt-3">
+    {% for r in resultados %}
+      <div class="card my-2 p-3 {% if r.es_correcta %}border-success{% else %}border-danger{% endif %}">
+        <h5>{{ r.pregunta }}</h5>
+        <p><strong>Tu(s) respuesta(s):</strong> {{ r.seleccionadas|join:", " }}</p>
+        <p><strong>Correcta(s):</strong> {{ r.correctas|join:", " }}</p>
+        <p class="{% if r.es_correcta %}text-success{% else %}text-danger{% endif %}">
+          {% if r.es_correcta %}✔ Correcto{% else %}✘ Incorrecto{% endif %}
+        </p>
+      </div>
+    {% endfor %}
+  </ul>
 
   <div class="text-center mt-4 d-flex justify-content-center gap-3">
     {% if user.is_authenticated %}
-      <a href="/management_test/" class="btn btn-secondary">Volver a la página de tests</a>
-      <a href="/management_test/dashboard/" class="btn btn-primary">Ir al Dashboard</a>
+      <a href="{% url 'historial_tests' %}" class="btn btn-secondary">Volver al historial</a>
+      <a href="{% url 'dashboard_usuario' %}" class="btn btn-primary">Ir al Dashboard</a>
     {% endif %}
   </div>
 </div>
+
 {% endblock %}

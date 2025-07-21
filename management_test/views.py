@@ -1,21 +1,25 @@
-# Python estándar
-import os
 import json
+import os
 import random
-
-# Django
+from collections import Counter
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.db.models import Avg, Max
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from django.utils.timezone import now
-from django.contrib.auth.decorators import login_required
-from django.db.models import Count, Avg, Q
-from django.contrib.auth.models import Group
+from .form import ComentarioForm
+from .models import PreguntaRespondida, ResultadoInteligencia, ResultadoTest, ComentariosProfessores
 
 
-# App local
-from .models import ResultadoTest, PreguntaRespondida, ComentariosProfessores
-from .form import  ComentarioForm
+
+
+
+def es_profesor(user):
+    return user.groups.filter(name='professores').exists()
+
+def es_alumno(user):
+    return user.groups.filter(name='alumnos').exists()
 
 
 def home(request):
@@ -36,99 +40,540 @@ def home(request):
     return render(request, 'management_test/tests.html', {'tests': tests})
 
 
+@login_required
 def realizar_test(request, filename):
-    if not filename:
-        return redirect('test')  # Redirige a la página de listado si no hay archivo
+    ruta_test = os.path.join(settings.BASE_DIR, "test", filename)
 
-    test_path = os.path.join(settings.BASE_DIR, 'test', filename)
+    if request.method == "GET":
+        
+        key_preguntas = "preguntas_inteligencias" if "inteligencias_multiples" in filename else "preguntas_test"
 
-    try:
-        with open(test_path, 'r', encoding='utf-8') as f:
-            test_data = json.load(f)
-    except FileNotFoundError:
-        return HttpResponse("Archivo no encontrado", status=404)
-    except json.JSONDecodeError:
-        return HttpResponse("Error al procesar el JSON", status=400)
+        if key_preguntas not in request.session:
+            with open(ruta_test, encoding="utf-8") as f:
+                contenido = json.load(f)
 
-    all_questions = test_data.get('questions', [])
-    total_available = len(all_questions)
+            if "inteligencias_multiples" in filename:
+                categorias = request.session.get("categorias_seleccionadas", [])
+                if not categorias:
+                    return redirect("seleccionar_categorias", filename=filename)
 
-    if 'indices' not in request.session or 'respuestas' not in request.session:
-        cantidad = min(20, total_available)
-        indices = random.sample(range(total_available), cantidad)
-        request.session['indices'] = indices
-        request.session['respuestas'] = {}
-        request.session['filename'] = filename
-        request.session.modified = True
+                preguntas = seleccionar_preguntas_equilibradas_por_categorias(
+                    contenido, categorias_seleccionadas=categorias
+                )
+            else:
+                preguntas_totales = contenido.get("questions", [])
+                preguntas = random.sample(preguntas_totales, min(20, len(preguntas_totales)))
 
-    indices = request.session['indices']
-    total = len(indices)
-    actual_index = int(request.GET.get('pregunta', 0))
+            request.session[key_preguntas] = preguntas
+            request.session["filename"] = filename
+            request.session["respuestas"] = []
+            request.session.modified = True
+            return redirect(f"{request.path}?pregunta=0")
 
-    if request.method == 'POST':
-        respuestas_usuario = request.POST.getlist('respuesta')
-        request.session['respuestas'][str(actual_index)] = respuestas_usuario
-        request.session.modified = True
+        preguntas = request.session.get(key_preguntas, [])
+        respuestas = request.session.get("respuestas", [])
+        pregunta_actual = int(request.GET.get("pregunta", 0))
 
-        if actual_index + 1 < total:
-            return HttpResponseRedirect(f"{request.path}?pregunta={actual_index + 1}")
-        else:
-            request.session['current_test'] = filename
-            return redirect('resultado_test')
+        if pregunta_actual >= len(preguntas):
+            if "inteligencias_multiples" in filename:
+                return redirect("resultado_test_inteligencias")
+            else:
+                return redirect("resultado_test")
 
-    index_pregunta = indices[actual_index]
-    pregunta = all_questions[index_pregunta]
+        
+        pregunta_actual_data = preguntas[pregunta_actual].copy()
+        pregunta_actual_data["options"] = random.sample(
+            pregunta_actual_data["options"],
+            len(pregunta_actual_data["options"])
+        )
 
-    barra_estado = []
-    for idx, preg_idx in enumerate(indices):
-        seleccion = request.session['respuestas'].get(str(idx), [])
-        estado = 'respondida' if seleccion else 'no_respondida'
-        barra_estado.append({
-            'numero': idx + 1,
-            'estado': estado,
-            'actual': (idx == actual_index),
+        return render(request, "management_test/realizar_test.html", {
+            "pregunta": pregunta_actual_data,
+            "numero": pregunta_actual + 1,
+            "total": len(preguntas),
+            "respuestas": respuestas,
+            "enumeracion": list(range(len(preguntas))),
+            "test": {
+                "title": "Test de Inteligencias Múltiples" if "inteligencias_multiples" in filename else "Test",
+                "description": "Evaluación basada en múltiples inteligencias." if "inteligencias_multiples" in filename else "",
+                "filename": filename,
+            },
+            "barra_estado": [
+                {
+                    "numero": idx + 1,
+                    "estado": 'respondida' if idx < len(respuestas) and respuestas[idx] else 'no_respondida',
+                    "actual": (idx == pregunta_actual)
+                } for idx in range(len(preguntas))
+            ]
         })
 
+    # POST - guardar respuesta
+    if request.method == "POST":
+        respuesta = request.POST.getlist("respuesta")
+        numero = int(request.GET.get("pregunta", 0))
+
+        respuestas = request.session.get("respuestas", [])
+        while len(respuestas) <= numero:
+            respuestas.append([])
+
+        respuestas[numero] = respuesta
+        request.session["respuestas"] = respuestas
+        request.session.modified = True
+
+        key_preguntas = "preguntas_inteligencias" if "inteligencias_multiples" in filename else "preguntas_test"
+
+        if "finalizar" in request.POST or numero + 1 >= len(request.session[key_preguntas]):
+            if "inteligencias_multiples" in filename:
+                return redirect("resultado_test_inteligencias")
+            else:
+                return redirect("resultado_test")
+        else:
+            return redirect(f"{request.path}?pregunta={numero + 1}")
+@login_required
+def historial_tests(request):
+    titulo_query = request.GET.get('titulo', '')
+
+    resultados = ResultadoTest.objects.filter(user=request.user)
+    titulos_unicos = resultados.values_list('test_title', flat=True).distinct()
+
+    if titulo_query:
+        resultados = resultados.filter(test_title__icontains=titulo_query)
+
+
+    for resultado in resultados:
+        try:
+            resultado.comentarioprofesor = resultado.comentariosprofessores
+        except ComentariosProfessores.DoesNotExist:
+            resultado.comentarioprofesor = None
+
+
+    return render(request, 'management_test/historial.html', {
+        'resultados': resultados,
+        'titulos_unicos': titulos_unicos,
+    })
+
+
+@login_required
+def dashboard_usuario(request):
+    resultados = ResultadoTest.objects.filter(user=request.user)
+
+    total_tests = resultados.count()
+    promedio_aciertos = resultados.aggregate(prom=Avg('aciertos'))['prom']
+    promedio_fallos = resultados.aggregate(prom=Avg('fallos'))['prom']
+
+    # Obtener el último resultado por título
+    ultimos_por_titulo = (
+        resultados
+        .values('test_title')
+        .annotate(ultimo_id=Max('id'))
+    )
+
+    # Obtener los objetos ResultadoTest correspondientes
+    ultimos_resultados = ResultadoTest.objects.filter(id__in=[r['ultimo_id'] for r in ultimos_por_titulo])
+
+    # Vincular el comentario del profesor si existe (relación uno a uno)
+    for resultado in ultimos_resultados:
+        try:
+            resultado.comentarioprofesor = resultado.comentariosprofessores
+        except ComentariosProfessores.DoesNotExist:
+            resultado.comentarioprofesor = None
+
     context = {
-        'pregunta': pregunta,
-        'numero': actual_index + 1,
-        'total': total,
-        'barra_estado': barra_estado,
-        'test': {
-            'title': test_data.get('title', ''),
-            'description': test_data.get('description', ''),
-            'filename': filename,
-        }
+        'total_tests': total_tests,
+        'promedio_aciertos': promedio_aciertos or 0,
+        'promedio_fallos': promedio_fallos or 0,
+        'ultimos_resultados': ultimos_resultados,
     }
 
-    return render(request, 'management_test/realizar_test.html', context)
+    return render(request, 'management_test/dashboard_usuario.html', context)
+
+@login_required
+def detalle_resultado_test(request, test_id):
+    resultado = get_object_or_404(ResultadoTest, id=test_id)
+
+    if resultado.user != request.user and not es_profesor(request.user):
+        return HttpResponseForbidden("No tienes permiso para ver este resultado.")
+
+    detalle_json = resultado.detalle
+    resultados = []
+    total_correctas = 0
+    aciertos_por_categoria = {}
+
+    for item in detalle_json:
+        pregunta = item.get('pregunta', f"Pregunta {len(resultados)+1}")
+        seleccionadas = item.get('seleccionadas', [])
+        correctas = item.get('correctas', [])
+        es_correcta = set(seleccionadas) == set(correctas)
+
+        if es_correcta:
+            total_correctas += 1
+
+        categoria = item.get('categoria')
+        if categoria and es_correcta:
+            aciertos_por_categoria[categoria] = aciertos_por_categoria.get(categoria, 0) + 1
+
+        resultados.append({
+            'pregunta': pregunta,
+            'seleccionadas': seleccionadas,
+            'correctas': correctas,
+            'es_correcta': es_correcta,
+        })
+
+    grafico_resultado = {
+        f"Pregunta {i+1}": 1 if r['es_correcta'] else 0
+        for i, r in enumerate(resultados)
+    }
+
+    tipo_test = 'inteligencias' if 'inteligencias' in resultado.test_title.lower() else 'clasico'
+
+    context = {
+        'resultado': resultado,
+        'resultados': resultados,
+        'aciertos': total_correctas,
+        'fallos': resultado.total_preguntas - total_correctas,
+        'total': resultado.total_preguntas,
+        'resultados_grafico': json.dumps(grafico_resultado),
+        'aciertos_por_categoria': json.dumps(aciertos_por_categoria),
+        'tipo_test': tipo_test,
+    }
+
+    return render(request, 'management_test/detalle_test.html', context)
 
 
+@login_required
+def evaluar_test(request):
+    if request.method == 'POST':
+        respuestas = request.POST  # {'p1': '3', 'p2': '5', ...}
+        totales = {intel: 0 for intel in INTELIGENCIAS}
+
+        for clave, valor in respuestas.items():
+            if clave.startswith('p'):
+                id_pregunta = int(clave[1:])
+                intel = MAPEO_INTELIGENCIA.get(id_pregunta)
+                if intel:
+                    totales[intel] += int(valor)
+
+        # Guardar resultado
+        resultado = ResultadoInteligencia.objects.create(
+            usuario=request.user,
+            resultados=totales
+        )
+
+        return render(request, 'tests/resultados.html', {
+            'resultados': totales,
+            'predominante': resultado.inteligencia_predominante()
+        })
+
+    return redirect('tests:test')  # Redirige si entran por GET
+
+
+def comentario_professor(request, tests_id):
+   test = get_object_or_404(ResultadoTest, id=tests_id)
+   
+   if request.method == 'POST':
+        form = ComentarioForm(request.POST)
+        if form.is_valid():
+                comentario = form.save(commit=False)
+                comentario.professor = request.user
+                comentario.test = test
+                comentario.save()
+                return redirect('dashboard_professor')
+   else:
+        form = ComentarioForm()
+        
+   return render(request, 'management_test/formulario_professor.html', {'form': form, 'test': test})
+   
+@login_required
+@user_passes_test(es_profesor)
+def profesor_vista(request):
+    titulos= request.GET.get('titulo')
+    usuarios = request.GET.get('usuarios')
+
+    test = ResultadoTest.objects.count()
+    test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
+    nombres = ResultadoTest.objects.select_related('user').values_list('user__username', flat=True).distinct()
+
+    if usuarios:
+        test_usuarios = test_usuarios.filter(user__username=usuarios) 
+
+    if titulos:
+       test_usuarios = test_usuarios.filter(test_title=titulos)
+
+    todos_los_titulos = test_usuarios.values_list('test_title', flat=True).distinct()
+
+    
+    for resultado in test_usuarios:
+        resultado.tiene_comentario = ComentariosProfessores.objects.filter(test=resultado).exists()
+
+    datos = {
+        'test': test,
+        'test_usuarios': test_usuarios,
+        'titulos': todos_los_titulos,
+        'titulos_filtrado': titulos,
+        'nombres': nombres,
+        'usuarios': usuarios,
+    }
+    
+    return render(request, 'management_test/dashboard_professor.html', datos)
+
+
+
+@login_required
+def modificar_comentario(request, id):
+    comentario = get_object_or_404(ComentariosProfessores, test_id=id)
+    
+    if request.method == 'POST':
+        form = ComentarioForm(request.POST, instance=comentario)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard_professor')
+    else:
+        form = ComentarioForm(instance=comentario)
+
+    contexto = {
+        'form': form,
+        'comentario': comentario
+    }
+    return render(request, 'management_test/formulario_professor.html', contexto)
+
+
+
+@login_required
+@user_passes_test(es_alumno)
+def formulario_usuario(request, test_id):
+    resultado = get_object_or_404(ResultadoTest, id=test_id, user=request.user)
+    comentario_obj = get_object_or_404(ComentariosProfessores, test=resultado)
+
+    if request.method == "POST":
+        comentario_usuario = request.POST.get("comentario_usuario")
+        comentario_obj.comentario_usuario = comentario_usuario
+        comentario_obj.save()
+        return redirect('historial_tests')  # O donde prefieras volver
+
+    return render(request, 'management_test/formulario_usuario.html', {
+        'comentario_profesor': comentario_obj.comentario,
+        'comentario_usuario': comentario_obj.comentario_usuario,
+        'test': resultado,
+    })
+
+
+
+@login_required
+def dashboard(request):
+    user = request.user
+
+    if user.is_staff or user.groups.filter(name='professores').exists():
+        return redirect('dashboard_professor')  # ← este es el nombre correcto de la URL
+    elif user.groups.filter(name='alumnos').exists():
+        return redirect('dashboard_usuario')
+    else:
+        return redirect('home')  # o puedes redirigir a una vista personalizada como "sin_grupo"
+
+
+
+def obtener_categorias_desde_json(filename):
+    ruta_test = os.path.join(settings.BASE_DIR, "test", filename)
+    with open(ruta_test, encoding="utf-8") as f:
+        contenido = json.load(f)
+    categorias = set()
+    for p in contenido.get("questions", []):
+        cat = p.get("categoria")
+        if cat:
+            categorias.add(cat)
+    return sorted(categorias)
+
+
+
+def seleccionar_preguntas_equilibradas_por_categorias(json_data, categorias_seleccionadas=None, num_preguntas_total=20):
+    preguntas = json_data.get("questions", [])
+
+    # Si no hay categorías seleccionadas, usar todas las que haya en las preguntas
+    if not categorias_seleccionadas:
+        categorias_seleccionadas = list({p.get("categoria") for p in preguntas if p.get("categoria")})
+
+    # Filtrar preguntas que estén en las categorías seleccionadas
+    preguntas_filtradas = [p for p in preguntas if p.get("categoria") in categorias_seleccionadas]
+
+    # Agrupar preguntas por categoría
+    preguntas_por_categoria = {}
+    for p in preguntas_filtradas:
+        cat = p.get("categoria")
+        preguntas_por_categoria.setdefault(cat, []).append(p)
+
+    total_categorias = len(preguntas_por_categoria)
+    if total_categorias == 0:
+        return []
+
+    num_por_categoria = max(1, num_preguntas_total // total_categorias)
+    faltan = num_preguntas_total - (num_por_categoria * total_categorias)
+
+    seleccionadas = []
+
+    # Tomar preguntas por categoría
+    for cat, lista_preguntas in preguntas_por_categoria.items():
+        random.shuffle(lista_preguntas)
+        cantidad = num_por_categoria
+        if faltan > 0:
+            cantidad += 1
+            faltan -= 1
+        seleccionadas.extend(lista_preguntas[:cantidad])
+
+    random.shuffle(seleccionadas)
+    return seleccionadas
+
+
+
+
+def seleccionar_preguntas_equilibradas(json_data, max_preguntas=20):
+    preguntas_seleccionadas = []
+
+    if not isinstance(json_data, dict) or "questions_by_category" not in json_data:
+        raise ValueError("El JSON no contiene el formato esperado con 'questions_by_category'.")
+
+    categorias = list(json_data['questions_by_category'].keys())
+    n_categorias = len(categorias)
+    if n_categorias == 0:
+        return []
+
+    preguntas_por_categoria = max_preguntas // n_categorias
+    resto = max_preguntas % n_categorias
+
+    for categoria in categorias:
+        preguntas_cat = json_data['questions_by_category'].get(categoria, [])
+        n_preguntas_cat = preguntas_por_categoria + (1 if resto > 0 else 0)
+        if resto > 0:
+            resto -= 1
+
+        preguntas_cat_seleccionadas = random.sample(
+            preguntas_cat,
+            min(n_preguntas_cat, len(preguntas_cat))
+        )
+        preguntas_seleccionadas.extend([
+            dict(p, **{"categoria": categoria}) for p in preguntas_cat_seleccionadas
+        ])
+
+    random.shuffle(preguntas_seleccionadas)
+    return preguntas_seleccionadas
+
+
+
+@login_required
+def resultado_test_inteligencias(request):
+    respuestas = request.session.get("respuestas", [])
+    preguntas = request.session.get("preguntas_inteligencias", [])
+
+    if not preguntas:
+        return redirect("seleccionar_categorias", filename='inteligencias_multiples.json')
+
+    resultados = []
+    aciertos_por_categoria = Counter()
+    total_preguntas = len(preguntas)
+
+    for i, pregunta in enumerate(preguntas):
+        seleccionadas = respuestas[i] if i < len(respuestas) else []
+        if isinstance(seleccionadas, str):
+            seleccionadas = [seleccionadas]
+
+        correctas = [opt['text'] for opt in pregunta.get('options', []) if opt.get('ok')]
+        es_correcta = sorted(seleccionadas) == sorted(correctas)
+
+        categoria = pregunta.get('categoria', 'Sin categoría')
+        if es_correcta:
+            aciertos_por_categoria[categoria] += 1
+
+        resultados.append({
+            'pregunta': pregunta.get('question', ''),
+            'seleccionadas': seleccionadas,
+            'correctas': correctas,
+            'es_correcta': es_correcta,
+            'categoria': categoria,
+        })
+
+    predominante = None
+    if aciertos_por_categoria:
+        predominante = aciertos_por_categoria.most_common(1)[0][0]
+
+    if request.user.is_authenticated:
+        # Guardar en ResultadoInteligencia
+        ResultadoInteligencia.objects.create(
+            usuario=request.user,
+            test_title='Test de Inteligencias Múltiples',
+            total=total_preguntas,
+            aciertos=sum(aciertos_por_categoria.values()),
+            fallos=total_preguntas - sum(aciertos_por_categoria.values()),
+            resultados=resultados,
+            fecha=now()
+        )
+
+        # Guardar en ResultadoTest
+        resultado_test_db = ResultadoTest.objects.create(
+            user=request.user,
+            test_title='Test de Inteligencias Múltiples',
+            filename='inteligencias_multiples.json',
+            fecha=now(),
+            total_preguntas=total_preguntas,
+            aciertos=sum(aciertos_por_categoria.values()),
+            fallos=total_preguntas - sum(aciertos_por_categoria.values()),
+            detalle=resultados
+        )
+
+        for r in resultados:
+            PreguntaRespondida.objects.create(
+                resultado=resultado_test_db,
+                pregunta=r['pregunta'],
+                categoria=r['categoria'],
+                respuestas_usuario=r['seleccionadas'],
+                respuestas_correctas=r['correctas'],
+                es_correcta=r['es_correcta']
+            )
+
+
+    # Limpiar sesión
+    for key in ['respuestas', 'preguntas_inteligencias', 'preguntas_test']:
+        request.session.pop(key, None)
+
+    context = {
+        'tipo_test': 'inteligencias',
+        'resultados': resultados,
+        'puntajes': dict(aciertos_por_categoria),
+        'predominante': predominante,
+        'aciertos': sum(aciertos_por_categoria.values()),
+        'fallos': total_preguntas - sum(aciertos_por_categoria.values()),
+        'total': total_preguntas,
+        'grafico_datos': json.dumps(dict(aciertos_por_categoria)),
+    }
+
+    return render(request, 'management_test/resultado_test.html', context)
+
+
+@login_required
 def resultado_test(request):
+    preguntas_seleccionadas = request.session.get('preguntas_test', [])
     respuestas = request.session.get('respuestas', {})
-    indices = request.session.get('indices', [])
     filename = request.session.get('filename', None)
 
-    if not filename:
-        return HttpResponse("No hay test cargado.", status=400)
+    if not (filename and preguntas_seleccionadas and respuestas is not None):
+        return HttpResponse("No hay test cargado o la sesión expiró.", status=400)
+
+    # Validar que preguntas_seleccionadas tenga la estructura correcta:
+    if not isinstance(preguntas_seleccionadas, list) or not all(isinstance(p, dict) for p in preguntas_seleccionadas):
+        return HttpResponse("Error en el formato de las preguntas almacenadas en sesión.", status=400)
 
     test_path = os.path.join(settings.BASE_DIR, 'test', filename)
     with open(test_path, 'r', encoding='utf-8') as f:
         test_data = json.load(f)
 
-    all_questions = test_data.get('questions', [])
     resultados = []
     total_correctas = 0
-    tipo_test = 'clasico'  # por defecto
+    tipo_test = 'clasico'
 
     es_inteligencias = 'inteligencias' in filename.lower()
     puntajes = {}
 
-    for i, index in enumerate(indices):
-        pregunta = all_questions[index]
+    for i, pregunta in enumerate(preguntas_seleccionadas):
         opciones = pregunta.get('options', [])
         correctas = sorted([op['text'] for op in opciones if op.get('ok')])
-        seleccionadas = respuestas.get(str(i), [])
+        seleccionadas = respuestas[i] if i < len(respuestas) else []
         if isinstance(seleccionadas, str):
             seleccionadas = [seleccionadas]
         seleccionadas = sorted(seleccionadas)
@@ -148,212 +593,147 @@ def resultado_test(request):
             tipo_test = 'inteligencias'
             inteligencia = pregunta.get('inteligencia', 'Sin categoría')
             item['inteligencia'] = inteligencia
-            puntajes[inteligencia] = puntajes.get(inteligencia, 0) + 1 if es_correcta else puntajes.get(inteligencia, 0)
+            puntajes[inteligencia] = puntajes.get(inteligencia, 0) + (1 if es_correcta else 0)
 
         resultados.append(item)
 
     predominante = max(puntajes, key=puntajes.get) if es_inteligencias and puntajes else None
 
-    # ✅ Guardar en base de datos
     if request.user.is_authenticated:
         resultado_db = ResultadoTest.objects.create(
             user=request.user,
             test_title=test_data.get('title', 'Sin título'),
             filename=filename,
             fecha=now(),
-            total_preguntas=len(indices),
+            total_preguntas=len(preguntas_seleccionadas),
             aciertos=total_correctas,
-            fallos=len(indices) - total_correctas,
-            detalle=resultados  # asumiendo que este campo acepta JSON (como JSONField)
+            fallos=len(preguntas_seleccionadas) - total_correctas,
+            detalle=resultados
         )
 
         for r in resultados:
             PreguntaRespondida.objects.create(
                 resultado=resultado_db,
-                user=request.user,
                 pregunta=r['pregunta'],
-                seleccionadas=r['seleccionadas'],
-                correctas=r['correctas'],
+                categoria=r.get('inteligencia', 'Sin categoría'),
+                respuestas_usuario=r['seleccionadas'],
+                respuestas_correctas=r['correctas'],
                 es_correcta=r['es_correcta']
             )
 
-    # ✅ Limpiar sesión para repetir test
-    for key in ['respuestas', 'indices', 'filename']:
+
+    for key in ['respuestas', 'preguntas_test', 'filename']:
         request.session.pop(key, None)
 
-    # ✅ Contexto para la plantilla
     if es_inteligencias:
         context = {
             'tipo_test': 'inteligencias',
-            'resultados': puntajes,
+            'resultados': resultados,
+            'puntajes': puntajes,
+            'grafico_datos': json.dumps(puntajes),
             'predominante': predominante,
             'aciertos': total_correctas,
-            'total': len(indices),
+            'total': len(preguntas_seleccionadas),
         }
     else:
         context = {
             'tipo_test': 'clasico',
             'resultados': resultados,
             'aciertos': total_correctas,
-            'fallos': len(indices) - total_correctas,
-            'total': len(indices),
+            'fallos': len(preguntas_seleccionadas) - total_correctas,
+            'total': len(preguntas_seleccionadas),
         }
 
-    return render(request, 'management_test/resultado.html', context)
+        grafico_resultado = {
+            f"Pregunta {i+1}": 1 if r['es_correcta'] else 0
+            for i, r in enumerate(resultados)
+        }
+        context['resultados_grafico'] = json.dumps(grafico_resultado)
+
+    return render(request, 'management_test/resultado_test.html', context)
 
 
 @login_required
-def historial_tests(request):
-    titulo_query = request.GET.get('titulo', '')
+def realizar_test_inteligencias_pregunta(request, numero):
+    preguntas = request.session.get('preguntas_inteligencias')
+    if not preguntas:
+        return redirect('seleccionar_categorias')
 
-    resultados = ResultadoTest.objects.filter(user=request.user)
-    titulos_unicos = resultados.values_list('test_title', flat=True).distinct()
+    total = len(preguntas)
+    numero = int(numero)
 
-    if titulo_query:
-        resultados = resultados.filter(test_title__icontains=titulo_query)
+    if numero >= total:
+        return redirect('resultado_test_inteligencias')
 
-    return render(request, 'management_test/historial.html', {
-        'resultados': resultados,
-        'titulos_unicos': titulos_unicos,
-    })
-
-@login_required
-def dashboard_usuario(request):
-    resultados = ResultadoTest.objects.filter(user=request.user)
-    total_tests = resultados.count()
-    promedio_aciertos = resultados.aggregate(prom=Avg('aciertos'))['prom']
-    promedio_fallos = resultados.aggregate(prom=Avg('fallos'))['prom']
-    test_por_data = resultados.order_by('-fecha')
-    
-    context = {
-        'total_tests': total_tests,
-        'promedio_aciertos': promedio_aciertos or 0,
-        'promedio_fallos': promedio_fallos or 0,
-        'test_por_data': test_por_data or 0,
-    }
-
-    return render(request, 'management_test/dashboard_usuario.html', context)
-
-@login_required
-def detalle_resultado_test(request, test_id):
-    resultado = get_object_or_404(ResultadoTest, id=test_id)
-    detalle_json = resultado.detalle  # campo tipo JSONField
-    resultados = []
-    datos_grafico = []
-
-    puntajes = {}  # Para inteligencias múltiples
-    
-    for item in detalle_json:
-        es_correcta = set(item['seleccionadas']) == set(item['correctas'])
-
-        resultados.append({
-            'pregunta': item['pregunta'],
-            'seleccionadas': item['seleccionadas'],
-            'correctas': item['correctas'],
-            'es_correcta': es_correcta,
-        })
-        datos_grafico = resultados
-
-        # Contar puntuación por inteligencia si aplica
-        inteligencia = item.get('inteligencia')
-        if inteligencia:
-            puntajes[inteligencia] = puntajes.get(inteligencia, 0) + (1 if es_correcta else 0)
-    
-    context = {
-        'resultado': resultado,
-        'aciertos': resultado.aciertos,
-        'total': resultado.aciertos + resultado.fallos,
-        'resultados': resultados,
-        'datos_grafico': datos_grafico,      # esto es un dict tipo {'Visual': 5, 'Musical': 3, ...}
-    }
-    
-    # Solo si es test de inteligencias múltiples y hay puntajes, serializamos a JSON
-    if resultado.test_title.lower() == "inteligencias múltiples" and puntajes:
-        predominante = max(puntajes, key=puntajes.get)
-        context.update({
-            'grafico_datos': json.dumps(puntajes),  # <-- Aquí serializamos JSON
-            'predominante': predominante,
-        })
-
-    return render(request, 'management_test/detalle_test.html', context)
-
-INTELIGENCIAS = [
-    "Lingüística", "Lógico-Matemática", "Corporal-Kinestésica", "Musical",
-    "Interpersonal", "Intrapersonal", "Naturalista", "Espacial"
-]
-
-# Mapeo: pregunta_id -> tipo inteligencia
-MAPEO_INTELIGENCIA = {
-    1: "Lingüística", 2: "Lógico-Matemática", 3: "Corporal-Kinestésica",
-    # … continúa hasta 100
-}
-
-def comentario_professor(request, tests_id):
-   test = get_object_or_404(ResultadoTest, id=tests_id)
-   
-   if request.method == 'POST':
-        form = ComentarioForm(request.POST)
-        if form.is_valid():
-                comentario = form.save(commit=False)
-                comentario.professor = request.user
-                comentario.test = test
-                comentario.save()
-                return redirect('dashboard_profe')
-   else:
-        form = ComentarioForm()
-        
-   return render(request, 'management_test/formulario_professor.html', {'form': form, 'test': test})
-   
-@login_required
-def profesor_vista(request):
-    titulos= request.GET.get('titulo')
-    usuarios = request.GET.get('usuarios')
-
-    test = ResultadoTest.objects.count()
-    test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
-    nombres = ResultadoTest.objects.select_related('user').values_list('user__username', flat=True).distinct()
-
-    if usuarios:
-        test_usuarios = test_usuarios.filter(user__username=usuarios) 
-
-    if titulos:
-       test_usuarios = test_usuarios.filter(test_title=titulos)
-
-    if usuarios:
-        todos_los_titulos = ResultadoTest.objects.filter(user__username=usuarios).values_list('test_title', flat=True).distinct()
-    else:
-        todos_los_titulos = ResultadoTest.objects.values_list('test_title', flat=True).distinct()
-    
-    for resultado in test_usuarios:
-        resultado.tiene_comentario = ComentariosProfessores.objects.filter(test=resultado).exists()
-
-    datos = {
-        'test': test,
-        'test_usuarios': test_usuarios,
-        'titulos': todos_los_titulos,
-        'titulos_filtrado': titulos,
-        'nombres': nombres,
-        'usuarios': usuarios,
-    }
-    
-    return render(request, 'management_test/dashboard_professor.html', datos)
-
-@login_required
-def modificar_comentario(request, id):
-    comentario = get_object_or_404(ComentariosProfessores, test_id=id)
-    
     if request.method == 'POST':
-        form = ComentarioForm(request.POST, instance=comentario)
-        if form.is_valid():
-            form.save()
-            return redirect('dashboard_profe')
-    else:
-        form = ComentarioForm(instance=comentario)
+        seleccionadas = request.POST.getlist('respuesta')
+        respuestas_sesion = request.session.get('respuestas', {})
+        respuestas_sesion[str(numero)] = seleccionadas
+        request.session['respuestas'] = respuestas_sesion
+        request.session.modified = True
+        return redirect('realizar_test_inteligencias_pregunta', numero=numero + 1)
 
-    contexto = {
-        'form': form,
-        'comentario': comentario
+    pregunta = preguntas[numero]
+    respuestas_sesion = request.session.get('respuestas', {})
+    barra_estado = []
+    for idx in range(total):
+        seleccion = respuestas_sesion.get(str(idx), [])
+        estado = 'respondida' if seleccion else 'no_respondida'
+        barra_estado.append({
+            'numero': idx + 1,
+            'estado': estado,
+            'actual': (idx == numero),
+        })
+
+    context = {
+        'pregunta': pregunta,
+        'numero': numero + 1,
+        'total': total,
+        'barra_estado': barra_estado,
+        'test': {
+            'title': 'Test de Inteligencias Múltiples',
+            'description': 'Evaluación basada en múltiples inteligencias.',
+            'filename': 'inteligencias_multiples.json',
+        }
     }
-    return render(request, 'management_test/formulario_professor.html', contexto)
+    return render(request, 'management_test/realizar_test.html', context)
 
+@login_required
+def seleccionar_categorias(request, filename):
+    path = os.path.join(settings.BASE_DIR, 'test', filename)
 
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except FileNotFoundError:
+        return render(request, "management_test/error.html", {
+            "mensaje": f"Archivo '{filename}' no encontrado."
+        })
+
+    # Extraer categorías únicas de las preguntas
+    categorias = sorted(set(
+        p.get('categoria') for p in data.get('questions', []) if p.get('categoria')
+    ))
+
+    if request.method == "POST":
+        categorias_seleccionadas = request.POST.getlist("categorias")
+        if not categorias_seleccionadas:
+            return render(request, "management_test/seleccionar_categoria.html", {
+                "categorias": categorias,
+                "filename": filename,
+                "error": "Debes seleccionar al menos una categoría.",
+                "categorias_seleccionadas": [],
+            })
+
+        request.session.pop('preguntas_test', None)
+        request.session.pop('respuestas', None)
+
+        request.session['categorias_seleccionadas'] = categorias_seleccionadas
+
+        return redirect('realizar_test', filename=filename)
+
+    return render(request, "management_test/seleccionar_categoria.html", {
+        "categorias": categorias,
+        "filename": filename,
+        "categorias_seleccionadas": [],
+    })

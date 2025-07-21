@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="row mb-4">
+  <h2 class="mb-4">Dashboard de {{ request.user.username }}</h2>
         <div class="col-md-4">
             <div class="card text-white bg-primary mb-3 shadow-sm">
                 <div class="card-body">
@@ -16,28 +17,32 @@
             <th scope="col">
               Alumnos
               <br>
-              <form method="GET" action="{% url 'dashboard_profe' %}">
-                <select name="usuarios" class="form-label" onchange="this.form.submit()">
-                  <option>Filtrar</option>
-                  {% for nombre in nombres %}
-                    <option value="{{ nombre }}" {% if nombre == usuarios %}selected{% endif %}>{{ nombre }}</option>
-                  {% endfor %}
-                  <option value="">Todos los Alumnos</option>
-               </select>
-             </form>
+              <form method="GET" action="{% url 'dashboard_professor' %}">
+              <select name="usuarios" class="form-label" onchange="this.form.submit()">
+                <option>Filtrar</option>
+                {% for nombre in nombres %}
+                <option value="{{ nombre }}" {% if nombre == usuarios %}selected{% endif %}>
+                  {{ nombre }}
+                </option>
+                {% endfor %}
+                <option value="">Todos los Alumnos</option>
+              </select>
+              </form>
             </th>
             <th scope="col">Fecha</th>
              <th scope="col">
               Titulo
               <br>
-              <form method="GET" action="{% url 'dashboard_profe' %}">
-                  <input type="hidden" name="usuarios" value="{{ usuarios }}">
+              <form method="GET" action="{% url 'dashboard_professor' %}">
+                <input type="hidden" name="usuarios" value="{{ usuarios }}">
+
                 <select name="titulo" id="titulo" class="form-label" onchange="this.form.submit()">
                   <option>Filtrar</option>
+                   
                   {% for titulo in titulos %}
                       <option value="{{ titulo }}" class="form-select" {% if titulo == titulo_filtrado %}selected{% endif %}>{{ titulo }}</option>
                   {% endfor %}
-                   <option value="">Ver todos</option>
+                  <option value="">Ver todos</option>
                   </select>
               </form>   
               </th>
@@ -48,21 +53,21 @@
            </tr>
         </thead>
         <tbody>
-          {% for test_usuario in test_usuarios %}
+          {% for test_usuarios in test_usuarios %}
           <tr>
-            <td>{{ test_usuario.user }}</td>
-            <td>{{ test_usuario.fecha | date:"d/m/Y H:i"}} </td>
-            <td class="fw-semibold">{{ test_usuario.test_title }}</td>
-            <td>{{ test_usuario.aciertos }}</td>
-            <td>{{ test_usuario.fallos }}</td>
+            <td>{{ test_usuarios.user }}</td>
+            <td>{{ test_usuarios.fecha | date:"d/m/Y H:i"}} </td>
+            <td class="fw-semibold">{{ test_usuarios.test_title }}</td>
+            <td>{{ test_usuarios.aciertos }}</td>
+            <td>{{ test_usuarios.fallos }}</td>
             <td>
-              {% if test_usuario.tiene_comentario %}
-                <a href="{% url 'modificar' id=test_usuario.id %}" class="btn btn-success">Comentado</a>
+              {% if test_usuarios.tiene_comentario %}
+                <a href="{% url 'modificar' id=test_usuarios.id %}" class="btn btn-success">Comentado</a>
               {% else %}
-                <a href="{% url 'comentarios' tests_id=test_usuario.id %}" class="btn btn-danger">Sin Comentario</a>
+                <a href="{% url 'comentarios' tests_id=test_usuarios.id %}" class="btn btn-danger">Sin Comentario</a>
               {% endif %}
             </td>
-            <td><a href="{% url 'detalle_resultado_test' test_usuario.id %}" class="btn btn-outline-primary btn-sm">Ver</a></td>
+            <td><a href="{% url 'detalle_resultado_test' test_usuarios.id %}" class="btn btn-outline-primary btn-sm">Ver</a></td>
           </tr>
           {% empty %}
           <tr>
