@@ -16,6 +16,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import render
 from .models import ResultadoTest, ComentariosProfessores
 
+
 def es_profesor(user):
     return user.groups.filter(name='professores').exists()
 
@@ -475,7 +476,6 @@ def resultado_test_inteligencias(request):
 
     return render(request, 'management_test/resultado_test.html', context)
 
-
 @login_required
 def realizar_test(request, filename):
     ruta_test = os.path.join(settings.BASE_DIR, "test", filename)
@@ -490,8 +490,22 @@ def realizar_test(request, filename):
 
     titulo_test = contenido.get("title") or f"Test: {os.path.splitext(filename)[0].replace('_', ' ').title()}"
     descripcion_test = contenido.get("description", "")
+    ultimo_test = request.session.get("filename")
+    if ultimo_test and ultimo_test != filename:
+        request.session.pop("preguntas_test", None)
+        request.session.pop("preguntas_inteligencias", None)
+        request.session.pop("respuestas", None)
+        request.session.modified = True
+
 
     if request.method == "GET":
+        # 🔄 Detectar reinicio
+        if request.GET.get("reiniciar") == "1":
+            request.session.pop(key_preguntas, None)
+            request.session.pop("respuestas", None)
+            request.session.modified = True
+            return redirect(f"{request.path}?pregunta=0")
+
         # Cargar preguntas por primera vez
         if key_preguntas not in request.session:
             if es_inteligencias:
@@ -525,7 +539,6 @@ def realizar_test(request, filename):
         opciones_mezcladas = random.sample(opciones, len(opciones))
 
         multiple_correctas = sum(1 for opcion in opciones if opcion.get("ok")) > 1
-
         pregunta_data["options"] = opciones_mezcladas
         pregunta_data["multiple_correctas"] = multiple_correctas
 
@@ -568,7 +581,6 @@ def realizar_test(request, filename):
             return redirect("resultado_test_inteligencias" if es_inteligencias else "resultado_test")
         else:
             return redirect(f"{request.path}?pregunta={siguiente_pregunta}")
-
 
 
 @login_required
