@@ -209,7 +209,10 @@ def profesor_vista(request):
     if titulos:
        test_usuarios = test_usuarios.filter(test_title=titulos)
 
-    todos_los_titulos = test_usuarios.values_list('test_title', flat=True).distinct()
+    if usuarios:
+        todos_los_titulos = ResultadoTest.objects.filter(user__username=usuarios).values_list('test_title', flat=True).distinct()
+    else:
+        todos_los_titulos = ResultadoTest.objects.values_list('test_title', flat=True).distinct()
 
     
     for resultado in test_usuarios:
