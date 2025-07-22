@@ -6,7 +6,8 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db.models import Avg, Max
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404, redirect, render, reverse
+from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import reverse
 from django.utils.timezone import now
 from .form import ComentarioForm
 from .models import PreguntaRespondida, ResultadoInteligencia, ResultadoTest, ComentariosProfessores
@@ -181,11 +182,15 @@ def evaluar_test(request):
 
     return redirect('tests:test')  # Redirige si entran por GET
 
-
+@login_required
+@user_passes_test(es_profesor)
 def comentario_professor(request, tests_id):
    test = get_object_or_404(ResultadoTest, id=tests_id)
    titulo = request.GET.get('titulo','')
    usuarios = request.GET.get('usuarios','')
+   usuarios = usuarios.strip() if usuarios else None
+   usuarios = usuarios if usuarios and usuarios not in ['', 'None', '+'] else ''
+
    if request.method == 'POST':
         form = ComentarioForm(request.POST)
         if form.is_valid():
@@ -212,7 +217,7 @@ def profesor_vista(request):
     titulos = request.GET.get('titulo')  
     usuarios = request.GET.get('usuarios') 
     usuarios = usuarios.strip() if usuarios else None
-    usuarios = usuarios if usuarios and usuarios  not in ['', 'Nones, '+''] else None
+    usuarios = usuarios if usuarios and usuarios  not in ['', 'None', '+'] else None
     test = ResultadoTest.objects.count()
     test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
 
@@ -229,6 +234,7 @@ def profesor_vista(request):
 
     # Títulos únicos para el desplegable
     titulo_query = ResultadoTest.objects.all()
+    
     if usuarios:
         titulo_query = titulo_query.filter(user__username=usuarios)
     todos_los_titulos = titulo_query.values_list('test_title', flat=True).distinct().order_by('test_title')
@@ -250,14 +256,19 @@ def profesor_vista(request):
 
 
 @login_required
+@user_passes_test(es_profesor)
 def modificar_comentario(request, id):
     comentario = get_object_or_404(ComentariosProfessores, test_id=id)
+    titulo = request.GET.get('titulo','')
+    usuarios = request.GET.get('usuarios','')
+    usuarios = usuarios.strip() if usuarios else None
+    usuarios = usuarios if usuarios and usuarios not in ['', 'None', '+'] else ''
     
     if request.method == 'POST':
         form = ComentarioForm(request.POST, instance=comentario)
         if form.is_valid():
             form.save()
-            return redirect('dashboard_professor')
+            return redirect(f"{reverse('dashboard_professor')}?titulo={titulo}&usuarios={usuarios}")
     else:
         form = ComentarioForm(instance=comentario)
 
@@ -537,7 +548,6 @@ def realizar_test(request, filename):
         pregunta_data = preguntas[pregunta_actual].copy()
         opciones = pregunta_data.get("options", [])
         opciones_mezcladas = random.sample(opciones, len(opciones))
-
         multiple_correctas = sum(1 for opcion in opciones if opcion.get("ok")) > 1
         pregunta_data["options"] = opciones_mezcladas
         pregunta_data["multiple_correctas"] = multiple_correctas
