@@ -209,7 +209,10 @@ def es_profesor(user):
 @user_passes_test(es_profesor)
 def profesor_vista(request):
     titulos = request.GET.get('titulo')  # valor seleccionado por el filtro de test
-    usuarios = request.GET.get('usuarios')  # valor seleccionado por el filtro de alumno
+    usuarios = request.GET.get('usuarios')
+    usuarios = usuarios.strip() if usuarios else None
+    usuarios = usuarios if usuarios and usuarios not in ['', 'None', '+'] else None
+
 
     test = ResultadoTest.objects.count()
     test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
