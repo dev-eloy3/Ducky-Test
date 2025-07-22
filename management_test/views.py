@@ -208,12 +208,10 @@ def es_profesor(user):
 @login_required
 @user_passes_test(es_profesor)
 def profesor_vista(request):
-    titulos = request.GET.get('titulo')  # valor seleccionado por el filtro de test
-    usuarios = request.GET.get('usuarios')
+    titulos = request.GET.get('titulo')  
+    usuarios = request.GET.get('usuarios') 
     usuarios = usuarios.strip() if usuarios else None
-    usuarios = usuarios if usuarios and usuarios not in ['', 'None', '+'] else None
-
-
+    usuarios = usuarios if usuarios and usuarios  not in ['', 'Nones, '+''] else None
     test = ResultadoTest.objects.count()
     test_usuarios = ResultadoTest.objects.select_related('user').order_by('-fecha')
 
@@ -476,6 +474,8 @@ def resultado_test_inteligencias(request):
     }
 
     return render(request, 'management_test/resultado_test.html', context)
+
+
 @login_required
 def realizar_test(request, filename):
     ruta_test = os.path.join(settings.BASE_DIR, "test", filename)
