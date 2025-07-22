@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+
+  {% if tipo_test == 'inteligencias' %}
+    <h2>Resultado del Test de Inteligencias Múltiples</h2>
+    <p><strong>Aciertos totales:</strong> {{ aciertos }} / {{ total }}</p>
+    <p><strong>Inteligencia predominante:</strong> {{ predominante|default:"No hay predominante" }}</p>
+
+    <h4 class="mt-4">Aciertos por categoría</h4>
+    <canvas id="graficoCategorias" width="600" height="300"></canvas>
+
+    <h4 class="mt-5">Detalle de tus respuestas</h4>
+    <div class="row row-cols-1 g-4 mt-3">
+      {% for r in resultados %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">{{ forloop.counter }}. {{ r.pregunta }}</h5>
+            <p class="card-text"><strong>Tu(s) respuesta(s):</strong>
+              {% if r.seleccionadas %}{{ r.seleccionadas|join:", " }}{% else %}<em>(sin responder)</em>{% endif %}
+            </p>
+            <p class="card-text"><strong>Correcta(s):</strong>
+              {% if r.correctas %}{{ r.correctas|join:", " }}{% else %}<em>No disponible</em>{% endif %}
+            </p>
+
+            {% if not r.seleccionadas %}
+              <span class="badge bg-warning text-dark">⚠ No respondida</span>
+            {% elif r.es_correcta %}
+              <span class="badge bg-success">✔ Correcto</span>
+            {% else %}
+              <span class="badge bg-danger">✘ Incorrecto</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const datos = JSON.parse('{{ grafico_datos|escapejs }}');
+      const categorias = Object.keys(datos);
+      const aciertos = Object.values(datos);
+
+      const ctx = document.getElementById('graficoCategorias').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: categorias,
+          datasets: [{
+            label: 'Aciertos por categoría',
+            data: aciertos,
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1,
+            borderRadius: 5,
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              precision: 0,
+              stepSize: 1,
+              title: {
+                display: true,
+                text: 'Número de aciertos'
+              }
+            },
+            x: {
+              title: {
+                display: true,
+                text: 'Categorías'
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: true }
+          }
+        }
+      });
+    </script>
+
+  {% else %}
+    <h2>Resultado del Test Clásico</h2>
+    <p><strong>Aciertos:</strong> {{ aciertos }} / {{ total }}</p>
+    <p><strong>Fallos:</strong> {{ fallos }}</p>
+
+    <h4 class="mt-4">Gráfico de resultados</h4>
+    <canvas id="graficoClasico" width="400" height="200"></canvas>
+
+    <h4 class="mt-4">Detalle de respuestas</h4>
+    <div class="row row-cols-1 g-4 mt-3">
+      {% for r in resultados %}
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Pregunta {{ forloop.counter }}</h5>
+            <p class="card-text"><strong>{{ r.pregunta }}</strong></p>
+            <p class="card-text"><strong>Tu respuesta:</strong>
+              {% if r.seleccionadas %}{{ r.seleccionadas|join:", " }}{% else %}<em>(sin responder)</em>{% endif %}
+            </p>
+            <p class="card-text"><strong>Respuesta correcta:</strong> {{ r.correctas|join:", " }}</p>
+
+            {% if not r.seleccionadas %}
+              <span class="badge bg-warning text-dark">No respondida</span>
+            {% elif r.es_correcta %}
+              <span class="badge bg-success">Correcto</span>
+            {% else %}
+              <span class="badge bg-danger">Incorrecto</span>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      const ctxClasico = document.getElementById('graficoClasico').getContext('2d');
+      new Chart(ctxClasico, {
+        type: 'bar',
+        data: {
+          labels: ['Aciertos', 'Fallos'],
+          datasets: [{
+            label: 'Resultados',
+            data: [{{ aciertos }}, {{ fallos }}],
+            backgroundColor: [
+              'rgba(75, 192, 192, 0.6)',
+              'rgba(255, 99, 132, 0.6)'
+            ],
+            borderColor: [
+              'rgba(75, 192, 192, 1)',
+              'rgba(255, 99, 132, 1)'
+            ],
+            borderWidth: 1,
+            borderRadius: 5
+          }]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              precision: 0,
+              stepSize: 1,
+              title: {
+                display: true,
+                text: 'Cantidad'
+              }
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: { enabled: true }
+          }
+        }
+      });
+    </script>
+  {% endif %}
+
+</div>
+
+<!-- ✅ Botón de regreso -->
+<div class="text-center mt-4 d-flex justify-content-center gap-3">
+  {% if user.is_authenticated %}
+  <a href="/management_test/" class="btn btn-secondary">
+    Volver a la página de tests
+  </a>
+  <a href="{% url 'dashboard' %}" class="btn btn-primary">
+    Ir al Dashboard
+  </a>
+  {% endif %}
+</div>
+{% endblock %}
