@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  {% if tipo_test == 'inteligencias' %}
+    <h2>Resultado del Test de Inteligencias Múltiples</h2>
+    <p class="lead">Aciertos: {{ aciertos }} / {{ total }}</p>
+
+    <ul class="list-group mt-4">
+      {% for r in resultados %}
+        <div class="card my-2 p-3 {% if r.es_correcta %}border-success{% else %}border-danger{% endif %}">
+          <h5>{{ r.pregunta }}</h5>
+          <p>Tu(s) respuesta(s): {{ r.seleccionadas|join:", " }}</p>
+          <p>Correcta(s): {{ r.correctas|join:", " }}</p>
+          <p class="{% if r.es_correcta %}text-success{% else %}text-danger{% endif %}">
+            {% if r.es_correcta %}✔ Correcto{% else %}✘ Incorrecto{% endif %}
+          </p>
+        </div>
+      {% endfor %}
+    </ul>
+
+      <hr>
+      <h4 class="mt-4">Inteligencia predominante: <strong>{{ predominante }}</strong></h4>
+      <canvas id="grafico" width="400" height="200"></canvas>
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      {{ grafico_datos|json_script:"grafico-datos" }}
+      <script>
+        const datos = JSON.parse(document.getElementById('grafico-datos').textContent);
+        const ctx = document.getElementById('grafico').getContext('2d');
+        console.log(datos);
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: Object.keys(datos),
+            datasets: [{
+              label: 'Puntuación por inteligencia',
+              data: Object.values(datos),
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+
+
+
+  {% else %}
+    <h2>Resultado del Test</h2>
+    <p class="lead">Aciertos: {{ aciertos }} / {{ total }}</p>
+
+    <ul class="list-group mt-4">
+      {% for r in resultados %}
+        <div class="card my-2 p-3 {% if r.es_correcta %}border-success{% else %}border-danger{% endif %}">
+          <h5>{{ r.pregunta }}</h5>
+          <p>Tu(s) respuesta(s): {{ r.seleccionadas|join:", " }}</p>
+          <p>Correcta(s): {{ r.correctas|join:", " }}</p>
+          <p class="{% if r.es_correcta %}text-success{% else %}text-danger{% endif %}">
+            {% if r.es_correcta %}✔ Correcto{% else %}✘ Incorrecto{% endif %}
+          </p>
+        </div>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <div class="text-center mt-4 d-flex justify-content-center gap-3">
+    {% if user.is_authenticated %}
+      <a href="/management_test/" class="btn btn-secondary">Volver a la página de tests</a>
+      <a href="/management_test/dashboard/" class="btn btn-primary">Ir al Dashboard</a>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
+

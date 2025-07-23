@@ -1,0 +1,1110 @@
+{
+  "title": "Test de Python Medio",
+  "description": "Test con 100 preguntas únicas sobre conceptos de Python medio.",
+  "category": "Programación",
+  "subcategory": "Python Medio",
+  "tags": ["python", "programación", "medio"],
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué hace el método 'extend()' en una lista?",
+      "options": [
+        {"text": "Agrega múltiples elementos al final", "ok": true},
+        {"text": "Reemplaza la lista", "ok": false},
+        {"text": "Elimina duplicados", "ok": false},
+        {"text": "Ordena los elementos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 2,
+      "question": "¿Qué hace set([1, 2, 2, 3]) en Python?",
+      "options": [
+        {"text": "{1, 2, 3}", "ok": true},
+        {"text": "[1, 2, 3]", "ok": false},
+        {"text": "{1, 2, 2, 3}", "ok": false},
+        {"text": "(1, 2, 3)", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 3,
+      "question": "¿Qué hace la función zip() en Python?",
+      "options": [
+        {"text": "Combina elementos de múltiples iterables", "ok": true},
+        {"text": "Descomprime archivos", "ok": false},
+        {"text": "Cambia de mayúsculas a minúsculas", "ok": false},
+        {"text": "Ordena listas", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 4,
+      "question": "¿Qué hace 'hola'.upper() en Python?",
+      "options": [
+        {"text": "HOLA", "ok": true},
+        {"text": "hola", "ok": false},
+        {"text": "Hola", "ok": false},
+        {"text": "HoLa", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 5,
+      "question": "¿Qué devuelve list(range(0, 10, 2))?",
+      "options": [
+        {"text": "[0, 2, 4, 6, 8]", "ok": true},
+        {"text": "[0, 1, 2, 3, 4]", "ok": false},
+        {"text": "[2, 4, 6, 8, 10]", "ok": false},
+        {"text": "[0, 2, 4, 6, 8, 10]", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 6,
+      "question": "¿Qué hace el operador '**' en Python?",
+      "options": [
+        {"text": "Potenciación", "ok": true},
+        {"text": "División entera", "ok": false},
+        {"text": "Módulo", "ok": false},
+        {"text": "Concatenación", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 7,
+      "question": "¿Qué hace sorted() en Python?",
+      "options": [
+        {"text": "Ordena un iterable", "ok": true},
+        {"text": "Crea una copia exacta", "ok": false},
+        {"text": "Concatena listas", "ok": false},
+        {"text": "Invierte el orden", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 8,
+      "question": "¿Qué hace dict.keys() en Python?",
+      "options": [
+        {"text": "Devuelve las claves del diccionario", "ok": true},
+        {"text": "Devuelve los valores", "ok": false},
+        {"text": "Devuelve pares clave-valor", "ok": false},
+        {"text": "Elimina claves duplicadas", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 9,
+      "question": "¿Qué hace lambda x: x+1 en Python?",
+      "options": [
+        {"text": "Crea una función anónima", "ok": true},
+        {"text": "Declara una clase", "ok": false},
+        {"text": "Modifica una variable global", "ok": false},
+        {"text": "Crea una constante", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 10,
+      "question": "¿Qué hace try/except en Python?",
+      "options": [
+        {"text": "Maneja excepciones", "ok": true},
+        {"text": "Declara variables", "ok": false},
+        {"text": "Imprime errores", "ok": false},
+        {"text": "Repite código", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 11,
+      "question": "¿Qué hace map() en Python?",
+      "options": [
+        {"text": "Aplica una función a cada elemento de un iterable", "ok": true},
+        {"text": "Filtra elementos", "ok": false},
+        {"text": "Itera al revés", "ok": false},
+        {"text": "Muestra un diccionario", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 12,
+      "question": "¿Qué hace filter() en Python?",
+      "options": [
+        {"text": "Filtra elementos según una condición", "ok": true},
+        {"text": "Ordena valores", "ok": false},
+        {"text": "Cambia el tipo de dato", "ok": false},
+        {"text": "Devuelve None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 13,
+      "question": "¿Qué representa 'None' en Python?",
+      "options": [
+        {"text": "Ausencia de valor", "ok": true},
+        {"text": "Cero", "ok": false},
+        {"text": "Una cadena vacía", "ok": false},
+        {"text": "Un booleano", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 14,
+      "question": "¿Qué hace len() en Python?",
+      "options": [
+        {"text": "Devuelve la longitud de un iterable", "ok": true},
+        {"text": "Borra un elemento", "ok": false},
+        {"text": "Cuenta espacios", "ok": false},
+        {"text": "Muestra el tipo", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 15,
+      "question": "¿Qué hace isinstance(x, int)?",
+      "options": [
+        {"text": "Comprueba si x es un entero", "ok": true},
+        {"text": "Convierte x a entero", "ok": false},
+        {"text": "Transforma un tipo", "ok": false},
+        {"text": "Crea una instancia", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 16,
+      "question": "¿Qué hace 'del variable' en Python?",
+      "options": [
+        {"text": "Elimina una variable u objeto", "ok": true},
+        {"text": "Declara una nueva variable", "ok": false},
+        {"text": "Copia una variable", "ok": false},
+        {"text": "Convierte a string", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 17,
+      "question": "¿Qué hace open('archivo.txt')?",
+      "options": [
+        {"text": "Abre un archivo para leer", "ok": true},
+        {"text": "Crea un archivo ejecutable", "ok": false},
+        {"text": "Cierra el archivo", "ok": false},
+        {"text": "Lee imágenes", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 18,
+      "question": "¿Qué es una list comprehension?",
+      "options": [
+        {"text": "Una forma concisa de crear listas", "ok": true},
+        {"text": "Un tipo de diccionario", "ok": false},
+        {"text": "Una función recursiva", "ok": false},
+        {"text": "Una estructura de control", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 19,
+      "question": "¿Qué hace with open() as f?",
+      "options": [
+        {"text": "Maneja archivos de forma segura", "ok": true},
+        {"text": "Declara funciones", "ok": false},
+        {"text": "Detiene el programa", "ok": false},
+        {"text": "Compila el archivo", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 20,
+      "question": "¿Qué significa if __name__ == '__main__'?",
+      "options": [
+        {"text": "El código se ejecuta directamente", "ok": true},
+        {"text": "Importa una librería", "ok": false},
+        {"text": "Cierra el programa", "ok": false},
+        {"text": "Declara una clase principal", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 21,
+      "question": "¿Qué hace *args en una función?",
+      "options": [
+        {"text": "Recibe un número variable de argumentos", "ok": true},
+        {"text": "Crea argumentos por defecto", "ok": false},
+        {"text": "Elimina argumentos", "ok": false},
+        {"text": "Declara constantes", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 22,
+      "question": "¿Qué hace **kwargs en Python?",
+      "options": [
+        {"text": "Recibe argumentos nombrados variables", "ok": true},
+        {"text": "Concatena diccionarios", "ok": false},
+        {"text": "Es un tipo de lista", "ok": false},
+        {"text": "Cierra la función", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 23,
+      "question": "¿Qué hace enumerate(lista)?",
+      "options": [
+        {"text": "Devuelve índices y valores", "ok": true},
+        {"text": "Cuenta elementos", "ok": false},
+        {"text": "Invierte una lista", "ok": false},
+        {"text": "Filtra valores", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 24,
+      "question": "¿Qué hace range(5)?",
+      "options": [
+        {"text": "Crea una secuencia de 0 a 4", "ok": true},
+        {"text": "Muestra los primeros 5 elementos", "ok": false},
+        {"text": "Repite un bucle 5 veces", "ok": false},
+        {"text": "Crea una tupla", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 25,
+      "question": "¿Qué hace ' '.join(['a', 'b', 'c'])?",
+      "options": [
+        {"text": "Une los elementos con espacios", "ok": true},
+        {"text": "Corta la cadena", "ok": false},
+        {"text": "Elimina espacios", "ok": false},
+        {"text": "Convierte a lista", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 26,
+      "question": "¿Qué hace 'abc,def'.split(',')?",
+      "options": [
+        {"text": "Divide una cadena por comas", "ok": true},
+        {"text": "Concatena cadenas", "ok": false},
+        {"text": "Elimina los espacios", "ok": false},
+        {"text": "Reemplaza comas por espacios", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 27,
+      "question": "¿Qué hace '  hola  '.strip()?",
+      "options": [
+        {"text": "Elimina espacios al inicio y final", "ok": true},
+        {"text": "Convierte a mayúsculas", "ok": false},
+        {"text": "Agrega puntos", "ok": false},
+        {"text": "Reemplaza espacios por guiones", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 28,
+      "question": "¿Qué hace lista.pop()?",
+      "options": [
+        {"text": "Elimina y devuelve el último elemento", "ok": true},
+        {"text": "Agrega un elemento", "ok": false},
+        {"text": "Ordena la lista", "ok": false},
+        {"text": "Invierte la lista", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 29,
+      "question": "¿Qué hace diccionario.get('clave')?",
+      "options": [
+        {"text": "Devuelve el valor de una clave", "ok": true},
+        {"text": "Elimina la clave", "ok": false},
+        {"text": "Ordena el diccionario", "ok": false},
+        {"text": "Cambia el tipo de clave", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 30,
+      "question": "¿Qué hace set() en Python?",
+      "options": [
+        {"text": "Crea un conjunto sin duplicados", "ok": true},
+        {"text": "Crea una lista ordenada", "ok": false},
+        {"text": "Elimina listas", "ok": false},
+        {"text": "Crea una variable booleana", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 31,
+      "question": "¿Qué hace update() en un diccionario?",
+      "options": [
+        {"text": "Agrega o actualiza pares clave-valor", "ok": true},
+        {"text": "Elimina claves vacías", "ok": false},
+        {"text": "Invierte claves y valores", "ok": false},
+        {"text": "Convierte a string", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 32,
+      "question": "¿Qué hace import en Python?",
+      "options": [
+        {"text": "Carga un módulo externo", "ok": true},
+        {"text": "Exporta una función", "ok": false},
+        {"text": "Elimina módulos", "ok": false},
+        {"text": "Reinicia el script", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 33,
+      "question": "¿Qué hace time.sleep(2)?",
+      "options": [
+        {"text": "Detiene la ejecución por 2 segundos", "ok": true},
+        {"text": "Mide el tiempo de ejecución", "ok": false},
+        {"text": "Crea un bucle infinito", "ok": false},
+        {"text": "Apaga el sistema", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 34,
+      "question": "¿Qué hace type(5)?",
+      "options": [
+        {"text": "Devuelve <class 'int'>", "ok": true},
+        {"text": "Convierte a string", "ok": false},
+        {"text": "Elimina el valor", "ok": false},
+        {"text": "Devuelve la dirección de memoria", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 35,
+      "question": "¿Qué hace id(x) en Python?",
+      "options": [
+        {"text": "Devuelve la dirección de memoria de x", "ok": true},
+        {"text": "Cambia el valor de x", "ok": false},
+        {"text": "Comprueba el tipo", "ok": false},
+        {"text": "Borra la variable", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 36,
+      "question": "¿Qué hace assert en Python?",
+      "options": [
+        {"text": "Verifica una condición y lanza un error si es falsa", "ok": true},
+        {"text": "Define una clase", "ok": false},
+        {"text": "Convierte un valor", "ok": false},
+        {"text": "Comenta una línea", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 37,
+      "question": "¿Qué hace isinstance('5', str)?",
+      "options": [
+        {"text": "Devuelve True", "ok": true},
+        {"text": "Devuelve False", "ok": false},
+        {"text": "Convierte el tipo", "ok": false},
+        {"text": "Da error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 38,
+      "question": "¿Qué hace print(*[1, 2, 3])?",
+      "options": [
+        {"text": "Imprime 1 2 3", "ok": true},
+        {"text": "Imprime [1, 2, 3]", "ok": false},
+        {"text": "Imprime (1, 2, 3)", "ok": false},
+        {"text": "Lanza error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 39,
+      "question": "¿Qué hace list({1, 2, 3})?",
+      "options": [
+        {"text": "Convierte un set en lista", "ok": true},
+        {"text": "Elimina duplicados de una lista", "ok": false},
+        {"text": "Ordena una lista", "ok": false},
+        {"text": "Convierte a string", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 40,
+      "question": "¿Qué hace print('a', 'b', sep='-')?",
+      "options": [
+        {"text": "Imprime a-b", "ok": true},
+        {"text": "Imprime ab", "ok": false},
+        {"text": "Imprime a b", "ok": false},
+        {"text": "Lanza error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 41,
+      "question": "¿Qué hace 'hello'.replace('l', '*')?",
+      "options": [
+        {"text": "Reemplaza todas las 'l' por '*'", "ok": true},
+        {"text": "Elimina las vocales", "ok": false},
+        {"text": "Agrega un asterisco al final", "ok": false},
+        {"text": "Convierte a mayúsculas", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 42,
+      "question": "¿Qué hace float('3.14')?",
+      "options": [
+        {"text": "Convierte la cadena a número decimal", "ok": true},
+        {"text": "Lanza un error", "ok": false},
+        {"text": "Devuelve un string", "ok": false},
+        {"text": "Convierte a entero", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 43,
+      "question": "¿Qué hace int('10') + 5?",
+      "options": [
+        {"text": "15", "ok": true},
+        {"text": "105", "ok": false},
+        {"text": "Error de tipo", "ok": false},
+        {"text": "50", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 44,
+      "question": "¿Qué hace print(bool([]))?",
+      "options": [
+        {"text": "False", "ok": true},
+        {"text": "True", "ok": false},
+        {"text": "[]", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 45,
+      "question": "¿Qué hace la expresión not True?",
+      "options": [
+        {"text": "False", "ok": true},
+        {"text": "True", "ok": false},
+        {"text": "None", "ok": false},
+        {"text": "0", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 46,
+      "question": "¿Qué hace 'Python'[::-1]?",
+      "options": [
+        {"text": "Invierte la cadena", "ok": true},
+        {"text": "Muestra solo mayúsculas", "ok": false},
+        {"text": "Convierte a lista", "ok": false},
+        {"text": "Elimina vocales", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 47,
+      "question": "¿Qué hace list(enumerate(['a', 'b']))?",
+      "options": [
+        {"text": "[(0, 'a'), (1, 'b')]", "ok": true},
+        {"text": "['a', 'b']", "ok": false},
+        {"text": "[(1, 'a'), (2, 'b')]", "ok": false},
+        {"text": "['a': 0, 'b': 1]", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 48,
+      "question": "¿Qué hace max([3, 7, 2])?",
+      "options": [
+        {"text": "7", "ok": true},
+        {"text": "2", "ok": false},
+        {"text": "3", "ok": false},
+        {"text": "Error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 49,
+      "question": "¿Qué hace min(['z', 'a', 'm'])?",
+      "options": [
+        {"text": "'a'", "ok": true},
+        {"text": "'z'", "ok": false},
+        {"text": "'m'", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 50,
+      "question": "¿Qué hace round(3.14159, 2)?",
+      "options": [
+        {"text": "3.14", "ok": true},
+        {"text": "3.1", "ok": false},
+        {"text": "3.15", "ok": false},
+        {"text": "3.00", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 51,
+      "question": "¿Qué hace abs(-7)?",
+      "options": [
+        {"text": "7", "ok": true},
+        {"text": "-7", "ok": false},
+        {"text": "0", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 52,
+      "question": "¿Qué hace any([False, True, False])?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "None", "ok": false},
+        {"text": "Error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 53,
+      "question": "¿Qué hace all([True, True, False])?",
+      "options": [
+        {"text": "False", "ok": true},
+        {"text": "True", "ok": false},
+        {"text": "None", "ok": false},
+        {"text": "Error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 54,
+      "question": "¿Qué hace pow(2, 3)?",
+      "options": [
+        {"text": "8", "ok": true},
+        {"text": "6", "ok": false},
+        {"text": "9", "ok": false},
+        {"text": "5", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 55,
+      "question": "¿Qué hace divmod(9, 2)?",
+      "options": [
+        {"text": "(4, 1)", "ok": true},
+        {"text": "(4.5, 0)", "ok": false},
+        {"text": "(5, -1)", "ok": false},
+        {"text": "(9, 2)", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 56,
+      "question": "¿Qué hace chr(65)?",
+      "options": [
+        {"text": "'A'", "ok": true},
+        {"text": "'a'", "ok": false},
+        {"text": "65", "ok": false},
+        {"text": "'65'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 57,
+      "question": "¿Qué hace ord('A')?",
+      "options": [
+        {"text": "65", "ok": true},
+        {"text": "97", "ok": false},
+        {"text": "'A'", "ok": false},
+        {"text": "'65'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 58,
+      "question": "¿Qué hace bin(10)?",
+      "options": [
+        {"text": "'0b1010'", "ok": true},
+        {"text": "'10'", "ok": false},
+        {"text": "'1010'", "ok": false},
+        {"text": "10", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 59,
+      "question": "¿Qué hace hex(255)?",
+      "options": [
+        {"text": "'0xff'", "ok": true},
+        {"text": "'ff'", "ok": false},
+        {"text": "255", "ok": false},
+        {"text": "'255'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 60,
+      "question": "¿Qué hace oct(8)?",
+      "options": [
+        {"text": "'0o10'", "ok": true},
+        {"text": "'8'", "ok": false},
+        {"text": "'10'", "ok": false},
+        {"text": "8", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 61,
+      "question": "¿Qué hace eval('2 + 3')?",
+      "options": [
+        {"text": "Ejecuta la expresión y devuelve 5", "ok": true},
+        {"text": "Concatena cadenas", "ok": false},
+        {"text": "Muestra '2 + 3'", "ok": false},
+        {"text": "Devuelve None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 62,
+      "question": "¿Qué hace repr('hola')?",
+      "options": [
+        {"text": "Devuelve una representación con comillas", "ok": true},
+        {"text": "Imprime la cadena", "ok": false},
+        {"text": "Muestra solo la primera letra", "ok": false},
+        {"text": "Lanza error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 63,
+      "question": "¿Qué hace zip([1, 2], ['a', 'b'])?",
+      "options": [
+        {"text": "Combina elementos en pares", "ok": true},
+        {"text": "Suma elementos", "ok": false},
+        {"text": "Intercambia los valores", "ok": false},
+        {"text": "Convierte a diccionario", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 64,
+      "question": "¿Qué hace reversed([1, 2, 3])?",
+      "options": [
+        {"text": "Devuelve un iterador invertido", "ok": true},
+        {"text": "Ordena la lista", "ok": false},
+        {"text": "Concatena valores", "ok": false},
+        {"text": "Lanza error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 65,
+      "question": "¿Qué hace sum([1, 2, 3])?",
+      "options": [
+        {"text": "6", "ok": true},
+        {"text": "[6]", "ok": false},
+        {"text": "1 + 2 + '3'", "ok": false},
+        {"text": "Error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 66,
+      "question": "¿Qué hace isinstance(3.5, float)?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "Lanza error", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 67,
+      "question": "¿Qué hace list(range(3))?",
+      "options": [
+        {"text": "[0, 1, 2]", "ok": true},
+        {"text": "[1, 2, 3]", "ok": false},
+        {"text": "0, 1, 2", "ok": false},
+        {"text": "(0, 1, 2)", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 68,
+      "question": "¿Qué hace print('a', 'b', end='!')?",
+      "options": [
+        {"text": "Imprime a b!", "ok": true},
+        {"text": "Imprime a!b", "ok": false},
+        {"text": "Imprime a b", "ok": false},
+        {"text": "Imprime ab!", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 69,
+      "question": "¿Qué hace tuple([1, 2])?",
+      "options": [
+        {"text": "(1, 2)", "ok": true},
+        {"text": "[1, 2]", "ok": false},
+        {"text": "{1, 2}", "ok": false},
+        {"text": "'1, 2'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 70,
+      "question": "¿Qué hace dict([(1, 'a'), (2, 'b')])?",
+      "options": [
+        {"text": "{1: 'a', 2: 'b'}", "ok": true},
+        {"text": "{'a': 1, 'b': 2}", "ok": false},
+        {"text": "[1: 'a', 2: 'b']", "ok": false},
+        {"text": "Lanza error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 71,
+      "question": "¿Qué hace list('abc')?",
+      "options": [
+        {"text": "['a', 'b', 'c']", "ok": true},
+        {"text": "['abc']", "ok": false},
+        {"text": "('a', 'b', 'c')", "ok": false},
+        {"text": "abc", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 72,
+      "question": "¿Qué hace ''.join(['1', '2', '3'])?",
+      "options": [
+        {"text": "'123'", "ok": true},
+        {"text": "'1 2 3'", "ok": false},
+        {"text": "[1, 2, 3]", "ok": false},
+        {"text": "'1-2-3'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 73,
+      "question": "¿Qué hace ''.zfill(5)?",
+      "options": [
+        {"text": "'00000'", "ok": true},
+        {"text": "''", "ok": false},
+        {"text": "0", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 74,
+      "question": "¿Qué hace 'abc123'.isalnum()?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "None", "ok": false},
+        {"text": "Error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 75,
+      "question": "¿Qué hace 'abc'.isalpha()?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "None", "ok": false},
+        {"text": "abc", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 76,
+      "question": "¿Qué hace '123'.isdigit()?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "'123'", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 77,
+      "question": "¿Qué hace 'Python'.lower()?",
+      "options": [
+        {"text": "'python'", "ok": true},
+        {"text": "'PYTHON'", "ok": false},
+        {"text": "'Python'", "ok": false},
+        {"text": "'pyTHon'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 78,
+      "question": "¿Qué hace 'python'.capitalize()?",
+      "options": [
+        {"text": "'Python'", "ok": true},
+        {"text": "'PYTHON'", "ok": false},
+        {"text": "'python'", "ok": false},
+        {"text": "'Python.'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 79,
+      "question": "¿Qué hace '  texto  '.lstrip()?",
+      "options": [
+        {"text": "Elimina espacios al inicio", "ok": true},
+        {"text": "Elimina espacios al final", "ok": false},
+        {"text": "Convierte a minúsculas", "ok": false},
+        {"text": "Elimina todas las letras", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 80,
+      "question": "¿Qué hace 'texto  '.rstrip()?",
+      "options": [
+        {"text": "Elimina espacios al final", "ok": true},
+        {"text": "Elimina espacios al inicio", "ok": false},
+        {"text": "Elimina tildes", "ok": false},
+        {"text": "Devuelve None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 81,
+      "question": "¿Qué hace 'Python'.startswith('Py')?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "None", "ok": false},
+        {"text": "'Py'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 82,
+      "question": "¿Qué hace 'Python'.endswith('on')?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "'on'", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 83,
+      "question": "¿Qué hace 'Python'.find('t')?",
+      "options": [
+        {"text": "2", "ok": true},
+        {"text": "-1", "ok": false},
+        {"text": "True", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 84,
+      "question": "¿Qué hace [1, 2, 3] + [4, 5]?",
+      "options": [
+        {"text": "[1, 2, 3, 4, 5]", "ok": true},
+        {"text": "[5, 7, 8]", "ok": false},
+        {"text": "Error", "ok": false},
+        {"text": "[1, 2, 3][4, 5]", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 85,
+      "question": "¿Qué hace {1, 2, 3} | {3, 4}?",
+      "options": [
+        {"text": "{1, 2, 3, 4}", "ok": true},
+        {"text": "{3}", "ok": false},
+        {"text": "Error", "ok": false},
+        {"text": "[1, 2, 3, 4]", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 86,
+      "question": "¿Qué hace {1, 2, 3} & {2, 3, 4}?",
+      "options": [
+        {"text": "{2, 3}", "ok": true},
+        {"text": "{1, 4}", "ok": false},
+        {"text": "{1, 2, 3, 4}", "ok": false},
+        {"text": "Error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 87,
+      "question": "¿Qué hace {1, 2, 3} - {2}?",
+      "options": [
+        {"text": "{1, 3}", "ok": true},
+        {"text": "{2}", "ok": false},
+        {"text": "Error", "ok": false},
+        {"text": "{1, 2, 3}", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 88,
+      "question": "¿Qué hace list(set([1, 2, 2, 3]))?",
+      "options": [
+        {"text": "[1, 2, 3]", "ok": true},
+        {"text": "[1, 2, 2, 3]", "ok": false},
+        {"text": "[1, 3]", "ok": false},
+        {"text": "[2]", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 89,
+      "question": "¿Qué hace dict(a=1, b=2)?",
+      "options": [
+        {"text": "{'a': 1, 'b': 2}", "ok": true},
+        {"text": "{1: 'a', 2: 'b'}", "ok": false},
+        {"text": "[('a', 1), ('b', 2)]", "ok": false},
+        {"text": "{a=1, b=2}", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 90,
+      "question": "¿Qué hace [x**2 for x in range(3)]?",
+      "options": [
+        {"text": "[0, 1, 4]", "ok": true},
+        {"text": "[1, 4, 9]", "ok": false},
+        {"text": "[2, 3, 4]", "ok": false},
+        {"text": "[0, 1, 2, 3]", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 91,
+      "question": "¿Qué hace {'a': 1}.items()?",
+      "options": [
+        {"text": "dict_items([('a', 1)])", "ok": true},
+        {"text": "[('a', 1)]", "ok": false},
+        {"text": "('a', 1)", "ok": false},
+        {"text": "Error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 92,
+      "question": "¿Qué hace 'abc'.upper() == 'ABC'?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "'abcABC'", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 93,
+      "question": "¿Qué hace 'abc'.title()?",
+      "options": [
+        {"text": "'Abc'", "ok": true},
+        {"text": "'ABC'", "ok": false},
+        {"text": "'abc'", "ok": false},
+        {"text": "'aBc'", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 94,
+      "question": "¿Qué hace sum([True, False, True])?",
+      "options": [
+        {"text": "2", "ok": true},
+        {"text": "3", "ok": false},
+        {"text": "1", "ok": false},
+        {"text": "0", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 95,
+      "question": "¿Qué hace bool(0)?",
+      "options": [
+        {"text": "False", "ok": true},
+        {"text": "True", "ok": false},
+        {"text": "0", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 96,
+      "question": "¿Qué hace bool(1)?",
+      "options": [
+        {"text": "True", "ok": true},
+        {"text": "False", "ok": false},
+        {"text": "1", "ok": false},
+        {"text": "None", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 97,
+      "question": "¿Qué hace input() en Python?",
+      "options": [
+        {"text": "Lee una entrada del usuario", "ok": true},
+        {"text": "Imprime un texto", "ok": false},
+        {"text": "Devuelve True", "ok": false},
+        {"text": "Finaliza el programa", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 98,
+      "question": "¿Qué hace print(type([]))?",
+      "options": [
+        {"text": "<class 'list'>", "ok": true},
+        {"text": "list", "ok": false},
+        {"text": "'[]'", "ok": false},
+        {"text": "<list>", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 99,
+      "question": "¿Qué hace print(type({}))?",
+      "options": [
+        {"text": "<class 'dict'>", "ok": true},
+        {"text": "<class 'set'>", "ok": false},
+        {"text": "'dict'", "ok": false},
+        {"text": "{}", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 100,
+      "question": "¿Qué hace print(type(()))?",
+      "options": [
+        {"text": "<class 'tuple'>", "ok": true},
+        {"text": "<class 'list'>", "ok": false},
+        {"text": "<class 'dict'>", "ok": false},
+        {"text": "<class 'set'>", "ok": false}
+      ],
+      "image": null
+    }
+  ]
+}
+

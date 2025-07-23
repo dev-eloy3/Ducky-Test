@@ -1,0 +1,1110 @@
+{
+  "title": "Test de Python Avanzado",
+  "description": "Test con 100 preguntas únicas sobre conceptos de Python avanzado.",
+  "category": "Programación",
+  "subcategory": "Python Avanzado",
+  "tags": ["python", "programación", "avanzado"],
+  "questions": [
+    {
+      "id": 1,
+      "question": "¿Qué hace la palabra clave 'yield' en una función?",
+      "options": [
+        {"text": "Convierte la función en un generador", "ok": true},
+        {"text": "Finaliza la ejecución de una función", "ok": false},
+        {"text": "Lanza una excepción", "ok": false},
+        {"text": "Importa un módulo", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 2,
+      "question": "¿Qué es un decorador en Python?",
+      "options": [
+        {"text": "Una función que modifica otra función", "ok": true},
+        {"text": "Un tipo de comentario especial", "ok": false},
+        {"text": "Un operador matemático", "ok": false},
+        {"text": "Un generador de clases", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 3,
+      "question": "¿Para qué se utiliza 'async def'?",
+      "options": [
+        {"text": "Define una función asíncrona", "ok": true},
+        {"text": "Define una función lambda", "ok": false},
+        {"text": "Inicia un hilo nuevo", "ok": false},
+        {"text": "Crea un generador", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 4,
+      "question": "¿Qué hace la función 'next()' sobre un generador?",
+      "options": [
+        {"text": "Avanza al siguiente valor del generador", "ok": true},
+        {"text": "Reinicia el generador", "ok": false},
+        {"text": "Finaliza la iteración", "ok": false},
+        {"text": "Convierte en lista", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 5,
+      "question": "¿Qué es una metaclase en Python?",
+      "options": [
+        {"text": "Una clase que define el comportamiento de otras clases", "ok": true},
+        {"text": "Una función que instancia objetos", "ok": false},
+        {"text": "Un tipo especial de excepción", "ok": false},
+        {"text": "Una clase que hereda de object", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 6,
+      "question": "¿Cuál es el propósito de __slots__?",
+      "options": [
+        {"text": "Limitar los atributos que una instancia puede tener", "ok": true},
+        {"text": "Crear métodos mágicos automáticamente", "ok": false},
+        {"text": "Evitar la herencia múltiple", "ok": false},
+        {"text": "Usar decoradores en propiedades", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 7,
+      "question": "¿Qué módulo se utiliza para concurrencia con hilos?",
+      "options": [
+        {"text": "threading", "ok": true},
+        {"text": "multiprocessing", "ok": false},
+        {"text": "asyncio", "ok": false},
+        {"text": "concurrent", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 8,
+      "question": "¿Qué permite hacer el módulo 'multiprocessing'?",
+      "options": [
+        {"text": "Ejecutar código en varios procesos", "ok": true},
+        {"text": "Crear múltiples hilos", "ok": false},
+        {"text": "Realizar operaciones matemáticas", "ok": false},
+        {"text": "Manejar excepciones", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 9,
+      "question": "¿Qué es una coroutine?",
+      "options": [
+        {"text": "Una función que puede ser pausada y reanudada", "ok": true},
+        {"text": "Una función que retorna una lista", "ok": false},
+        {"text": "Una clase con métodos mágicos", "ok": false},
+        {"text": "Un tipo de excepción", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 10,
+      "question": "¿Qué hace el operador '@' en una función?",
+      "options": [
+        {"text": "Aplica un decorador", "ok": true},
+        {"text": "Realiza multiplicación escalar", "ok": false},
+        {"text": "Concatena cadenas", "ok": false},
+        {"text": "Indica una dirección de memoria", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 11,
+      "question": "¿Qué hace el método __enter__ en un contexto?",
+      "options": [
+        {"text": "Se ejecuta al iniciar un bloque with", "ok": true},
+        {"text": "Cierra el recurso usado", "ok": false},
+        {"text": "Lanza una excepción", "ok": false},
+        {"text": "Crea una función de callback", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 12,
+      "question": "¿Qué módulo de Python permite introspección de objetos?",
+      "options": [
+        {"text": "inspect", "ok": true},
+        {"text": "sys", "ok": false},
+        {"text": "os", "ok": false},
+        {"text": "types", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 13,
+      "question": "¿Qué hace isinstance(obj, type)?",
+      "options": [
+        {"text": "Comprueba si un objeto es instancia de un tipo", "ok": true},
+        {"text": "Convierte un objeto en un tipo", "ok": false},
+        {"text": "Crea una nueva instancia", "ok": false},
+        {"text": "Compara clases base", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 14,
+      "question": "¿Para qué sirve __init_subclass__?",
+      "options": [
+        {"text": "Personaliza la creación de subclases", "ok": true},
+        {"text": "Inicializa atributos privados", "ok": false},
+        {"text": "Hereda constructores", "ok": false},
+        {"text": "Ejecuta una coroutine", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 15,
+      "question": "¿Qué retorna un decorador por lo general?",
+      "options": [
+        {"text": "Una nueva función con comportamiento modificado", "ok": true},
+        {"text": "Un booleano", "ok": false},
+        {"text": "Una excepción", "ok": false},
+        {"text": "Un generador", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 16,
+      "question": "¿Qué hace functools.lru_cache?",
+      "options": [
+        {"text": "Memoriza resultados de una función", "ok": true},
+        {"text": "Crea una lista de ejecución", "ok": false},
+        {"text": "Simula una pila LIFO", "ok": false},
+        {"text": "Multiplica resultados", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 17,
+      "question": "¿Qué representa la anotación '-> None' en una función?",
+      "options": [
+        {"text": "Indica que la función no retorna nada", "ok": true},
+        {"text": "Retorna None por defecto", "ok": false},
+        {"text": "Evita errores de tipo", "ok": false},
+        {"text": "Es un generador vacío", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 18,
+      "question": "¿Cuál es la diferencia entre 'is' y '=='?",
+      "options": [
+        {"text": "'is' compara identidad, '==' compara valor", "ok": true},
+        {"text": "Son equivalentes", "ok": false},
+        {"text": "'is' compara clases, '==' tipos", "ok": false},
+        {"text": "'==' nunca compara listas", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 19,
+      "question": "¿Qué hace el método __call__?",
+      "options": [
+        {"text": "Permite que una instancia se comporte como función", "ok": true},
+        {"text": "Inicializa atributos ocultos", "ok": false},
+        {"text": "Crea una clase abstracta", "ok": false},
+        {"text": "Evalúa argumentos de entrada", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 20,
+      "question": "¿Qué hace el módulo 'typing'?",
+      "options": [
+        {"text": "Permite agregar anotaciones de tipos", "ok": true},
+        {"text": "Controla errores en tiempo de ejecución", "ok": false},
+        {"text": "Genera documentos automáticamente", "ok": false},
+        {"text": "Agrega decoradores dinámicos", "ok": false}
+      ],
+      "image": null
+    },
+        {
+      "id": 21,
+      "question": "¿Qué hace el parámetro 'key' en la función sorted()?",
+      "options": [
+        {"text": "Define una función para ordenar los elementos", "ok": true},
+        {"text": "Filtra los elementos antes de ordenar", "ok": false},
+        {"text": "Invierte el orden por defecto", "ok": false},
+        {"text": "Ignora valores repetidos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 22,
+      "question": "¿Qué significa monkey patching en Python?",
+      "options": [
+        {"text": "Modificar dinámicamente una clase o módulo en tiempo de ejecución", "ok": true},
+        {"text": "Aplicar parches de seguridad", "ok": false},
+        {"text": "Eliminar funciones de una clase", "ok": false},
+        {"text": "Actualizar una biblioteca desde PIP", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 23,
+      "question": "¿Qué es el Global Interpreter Lock (GIL)?",
+      "options": [
+        {"text": "Un mecanismo que impide la ejecución simultánea de hilos en CPython", "ok": true},
+        {"text": "Una herramienta para bloquear variables globales", "ok": false},
+        {"text": "Una librería para sincronización de procesos", "ok": false},
+        {"text": "Una estructura de control avanzada", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 24,
+      "question": "¿Qué hace el módulo 'contextlib'?",
+      "options": [
+        {"text": "Proporciona utilidades para crear contextos personalizados", "ok": true},
+        {"text": "Crea variables globales", "ok": false},
+        {"text": "Captura errores silenciosamente", "ok": false},
+        {"text": "Elimina recursos abiertos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 25,
+      "question": "¿Qué significa duck typing en Python?",
+      "options": [
+        {"text": "El tipo se determina por el comportamiento y no por la herencia", "ok": true},
+        {"text": "Solo se permiten clases con constructores", "ok": false},
+        {"text": "Usa anotaciones estáticas obligatorias", "ok": false},
+        {"text": "Implementa tipos estrictos por defecto", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 26,
+      "question": "¿Qué hace el método __getattr__?",
+      "options": [
+        {"text": "Se invoca cuando se accede a un atributo inexistente", "ok": true},
+        {"text": "Se invoca al inicializar la clase", "ok": false},
+        {"text": "Reemplaza todos los atributos", "ok": false},
+        {"text": "Elimina atributos del objeto", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 27,
+      "question": "¿Qué permite el módulo 'abc' en Python?",
+      "options": [
+        {"text": "Crear clases abstractas", "ok": true},
+        {"text": "Controlar errores por tipo", "ok": false},
+        {"text": "Modificar funciones globales", "ok": false},
+        {"text": "Convertir clases a strings", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 28,
+      "question": "¿Qué hace la función getattr(obj, 'attr')?",
+      "options": [
+        {"text": "Devuelve el valor del atributo 'attr'", "ok": true},
+        {"text": "Elimina el atributo de obj", "ok": false},
+        {"text": "Inicializa un nuevo atributo", "ok": false},
+        {"text": "Evalúa la clase base", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 29,
+      "question": "¿Cuál es la diferencia entre class y metaclass?",
+      "options": [
+        {"text": "Una clase define objetos, una metaclase define clases", "ok": true},
+        {"text": "Ambas son sinónimos", "ok": false},
+        {"text": "La metaclase solo se usa en decoradores", "ok": false},
+        {"text": "La metaclase solo existe en Python 2", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 30,
+      "question": "¿Qué hace la función hasattr(obj, 'attr')?",
+      "options": [
+        {"text": "Devuelve True si el objeto tiene el atributo", "ok": true},
+        {"text": "Elimina el atributo", "ok": false},
+        {"text": "Crea un atributo si no existe", "ok": false},
+        {"text": "Devuelve el valor del atributo", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 31,
+      "question": "¿Qué permite el módulo 'dataclasses'?",
+      "options": [
+        {"text": "Crear clases con menos código para almacenar datos", "ok": true},
+        {"text": "Generar funciones hash", "ok": false},
+        {"text": "Crear decoradores dinámicos", "ok": false},
+        {"text": "Acceder a bases de datos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 32,
+      "question": "¿Qué hace el decorador @staticmethod?",
+      "options": [
+        {"text": "Define un método que no requiere self", "ok": true},
+        {"text": "Oculta un método público", "ok": false},
+        {"text": "Crea un generador", "ok": false},
+        {"text": "Importa funciones de otro módulo", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 33,
+      "question": "¿Para qué sirve el módulo 'concurrent.futures'?",
+      "options": [
+        {"text": "Ejecutar tareas concurrentes con hilos o procesos", "ok": true},
+        {"text": "Reemplazar decoradores", "ok": false},
+        {"text": "Ejecutar expresiones lambda", "ok": false},
+        {"text": "Crear rutas de archivos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 34,
+      "question": "¿Qué hace 'from __future__ import annotations'?",
+      "options": [
+        {"text": "Permite usar anotaciones de tipos como strings (lazy evaluation)", "ok": true},
+        {"text": "Importa todas las funciones del futuro", "ok": false},
+        {"text": "Activa decoradores experimentales", "ok": false},
+        {"text": "Hace que __annotations__ se convierta en global", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 35,
+      "question": "¿Qué hace el operador walrus ':='?",
+      "options": [
+        {"text": "Asigna y devuelve el valor al mismo tiempo", "ok": true},
+        {"text": "Compara dos valores y retorna booleano", "ok": false},
+        {"text": "Declara una variable global", "ok": false},
+        {"text": "Une listas por asignación", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 36,
+      "question": "¿Qué hace un 'context manager'?",
+      "options": [
+        {"text": "Controla recursos con bloques 'with'", "ok": true},
+        {"text": "Crea decoradores", "ok": false},
+        {"text": "Ejecuta funciones asíncronas", "ok": false},
+        {"text": "Configura variables de entorno", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 37,
+      "question": "¿Qué hace el método __exit__ en un context manager?",
+      "options": [
+        {"text": "Se ejecuta al finalizar el bloque with", "ok": true},
+        {"text": "Abre un archivo", "ok": false},
+        {"text": "Inicializa el objeto", "ok": false},
+        {"text": "Imprime un error", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 38,
+      "question": "¿Qué hace @classmethod?",
+      "options": [
+        {"text": "Define un método que recibe cls como primer argumento", "ok": true},
+        {"text": "Declara una clase dentro de otra", "ok": false},
+        {"text": "Convierte una clase en función", "ok": false},
+        {"text": "Crea propiedades privadas", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 39,
+      "question": "¿Qué permite el método __repr__?",
+      "options": [
+        {"text": "Representación formal del objeto (para debugging)", "ok": true},
+        {"text": "Representación visual en consola", "ok": false},
+        {"text": "Almacenar logs de la clase", "ok": false},
+        {"text": "Convertir el objeto en bytes", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 40,
+      "question": "¿Qué hace la función id(obj)?",
+      "options": [
+        {"text": "Devuelve la dirección de memoria del objeto", "ok": true},
+        {"text": "Imprime la clase del objeto", "ok": false},
+        {"text": "Devuelve un identificador string", "ok": false},
+        {"text": "Borra el objeto", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 41,
+      "question": "¿Qué hace la función setattr(obj, 'attr', value)?",
+      "options": [
+        {"text": "Establece dinámicamente un atributo en un objeto", "ok": true},
+        {"text": "Verifica si existe un atributo", "ok": false},
+        {"text": "Elimina el atributo", "ok": false},
+        {"text": "Devuelve una función anónima", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 42,
+      "question": "¿Qué es un descriptor en Python?",
+      "options": [
+        {"text": "Un objeto que define métodos __get__, __set__ o __delete__", "ok": true},
+        {"text": "Una anotación de tipo estático", "ok": false},
+        {"text": "Un tipo especial de decorador", "ok": false},
+        {"text": "Un método privado", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 43,
+      "question": "¿Para qué se usa el módulo 'typing.Protocol'?",
+      "options": [
+        {"text": "Definir interfaces estructurales (duck typing)", "ok": true},
+        {"text": "Controlar conexiones de red", "ok": false},
+        {"text": "Enviar mensajes entre clases", "ok": false},
+        {"text": "Modificar funciones de red", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 44,
+      "question": "¿Qué hace '__all__' en un módulo?",
+      "options": [
+        {"text": "Define qué símbolos se exportan con 'from module import *'", "ok": true},
+        {"text": "Importa todos los módulos disponibles", "ok": false},
+        {"text": "Convierte todos los nombres en públicos", "ok": false},
+        {"text": "Oculta variables privadas", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 45,
+      "question": "¿Qué hace el método __del__?",
+      "options": [
+        {"text": "Se ejecuta cuando el objeto es destruido", "ok": true},
+        {"text": "Inicializa el objeto", "ok": false},
+        {"text": "Se llama al clonar el objeto", "ok": false},
+        {"text": "Se usa para borrar atributos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 46,
+      "question": "¿Qué hace el módulo sys.setrecursionlimit()?",
+      "options": [
+        {"text": "Establece el límite de profundidad de recursión", "ok": true},
+        {"text": "Evita llamadas infinitas a funciones", "ok": false},
+        {"text": "Restringe el uso de memoria RAM", "ok": false},
+        {"text": "Cierra la ejecución del script", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 47,
+      "question": "¿Qué hace el módulo weakref?",
+      "options": [
+        {"text": "Permite referencias a objetos que no impiden su recolección", "ok": true},
+        {"text": "Crea referencias entre módulos", "ok": false},
+        {"text": "Impide la eliminación de objetos", "ok": false},
+        {"text": "Optimiza listas grandes", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 48,
+      "question": "¿Qué hace el decorador @property?",
+      "options": [
+        {"text": "Convierte un método en atributo de solo lectura", "ok": true},
+        {"text": "Convierte un atributo en privado", "ok": false},
+        {"text": "Inicializa el valor por defecto", "ok": false},
+        {"text": "Transforma un decorador en clase", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 49,
+      "question": "¿Qué permite el módulo asyncio?",
+      "options": [
+        {"text": "Programación asíncrona basada en corutinas", "ok": true},
+        {"text": "Ejecutar código multihilo", "ok": false},
+        {"text": "Crear tareas periódicas con threading", "ok": false},
+        {"text": "Controlar acceso a bases de datos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 50,
+      "question": "¿Qué hace la instrucción 'raise from'?",
+      "options": [
+        {"text": "Encadena excepciones para preservar el contexto original", "ok": true},
+        {"text": "Lanza una excepción personalizada", "ok": false},
+        {"text": "Lanza una excepción global", "ok": false},
+        {"text": "Finaliza un bucle", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 51,
+      "question": "¿Qué es una excepción personalizada?",
+      "options": [
+        {"text": "Una clase que hereda de Exception", "ok": true},
+        {"text": "Una cadena usada en try/except", "ok": false},
+        {"text": "Un método dentro de una clase", "ok": false},
+        {"text": "Una función sin retorno", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 52,
+      "question": "¿Qué hace inspect.signature(func)?",
+      "options": [
+        {"text": "Devuelve los parámetros de una función", "ok": true},
+        {"text": "Verifica si una función es async", "ok": false},
+        {"text": "Obtiene el valor de retorno", "ok": false},
+        {"text": "Importa funciones de inspect", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 53,
+      "question": "¿Qué hace el operador '**' en argumentos de funciones?",
+      "options": [
+        {"text": "Captura argumentos con clave (kwargs)", "ok": true},
+        {"text": "Realiza exponenciación", "ok": false},
+        {"text": "Declara constantes", "ok": false},
+        {"text": "Desestructura tuplas", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 54,
+      "question": "¿Qué hace 'globals()' en Python?",
+      "options": [
+        {"text": "Devuelve un diccionario con variables globales", "ok": true},
+        {"text": "Borra todas las variables globales", "ok": false},
+        {"text": "Lista los módulos importados", "ok": false},
+        {"text": "Inicializa un entorno aislado", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 55,
+      "question": "¿Qué hace __getitem__ en una clase?",
+      "options": [
+        {"text": "Permite usar notación de índice (obj[i])", "ok": true},
+        {"text": "Devuelve un nuevo objeto iterable", "ok": false},
+        {"text": "Elimina elementos por índice", "ok": false},
+        {"text": "Agrega valores al objeto", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 56,
+      "question": "¿Qué hace __setitem__?",
+      "options": [
+        {"text": "Permite asignar un valor a una clave o índice", "ok": true},
+        {"text": "Crea un índice nuevo", "ok": false},
+        {"text": "Elimina una entrada de diccionario", "ok": false},
+        {"text": "Retorna todos los elementos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 57,
+      "question": "¿Qué hace __len__?",
+      "options": [
+        {"text": "Devuelve la longitud de un objeto", "ok": true},
+        {"text": "Elimina el último elemento", "ok": false},
+        {"text": "Crea una lista nueva", "ok": false},
+        {"text": "Divide elementos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 58,
+      "question": "¿Qué hace 'pass' en Python?",
+      "options": [
+        {"text": "Es una instrucción nula, no hace nada", "ok": true},
+        {"text": "Finaliza una función", "ok": false},
+        {"text": "Reinicia un bucle", "ok": false},
+        {"text": "Crea un bucle infinito", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 59,
+      "question": "¿Qué hace 'nonlocal' en una función anidada?",
+      "options": [
+        {"text": "Permite modificar una variable de un ámbito superior", "ok": true},
+        {"text": "Declara una constante global", "ok": false},
+        {"text": "Crea una variable local nueva", "ok": false},
+        {"text": "Importa variables de otro módulo", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 60,
+      "question": "¿Qué permite el módulo 'itertools'?",
+      "options": [
+        {"text": "Proporciona herramientas para trabajar con iteradores", "ok": true},
+        {"text": "Conecta múltiples procesos", "ok": false},
+        {"text": "Controla funciones asíncronas", "ok": false},
+        {"text": "Mejora el manejo de archivos", "ok": false}
+      ],
+      "image": null
+    },
+        {
+      "id": 61,
+      "question": "¿Qué hace el módulo 'functools.partial'?",
+      "options": [
+        {"text": "Permite fijar algunos argumentos de una función", "ok": true},
+        {"text": "Reduce una función a una línea", "ok": false},
+        {"text": "Convierte una función en generador", "ok": false},
+        {"text": "Agrega un decorador implícito", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 62,
+      "question": "¿Qué hace la expresión 'lambda x: x + 1'?",
+      "options": [
+        {"text": "Crea una función anónima que suma 1 al argumento", "ok": true},
+        {"text": "Declara una variable global", "ok": false},
+        {"text": "Inicia un generador", "ok": false},
+        {"text": "Crea una clase", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 63,
+      "question": "¿Qué hace el módulo 'pprint'?",
+      "options": [
+        {"text": "Imprime estructuras de datos de forma legible", "ok": true},
+        {"text": "Convierte texto a JSON", "ok": false},
+        {"text": "Depura código automáticamente", "ok": false},
+        {"text": "Colorea la salida por consola", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 64,
+      "question": "¿Qué hace 'collections.defaultdict'?",
+      "options": [
+        {"text": "Crea un diccionario con valores por defecto automáticos", "ok": true},
+        {"text": "Convierte una lista en diccionario", "ok": false},
+        {"text": "Elimina claves duplicadas", "ok": false},
+        {"text": "Ordena claves alfabéticamente", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 65,
+      "question": "¿Qué hace el módulo 'pathlib'?",
+      "options": [
+        {"text": "Permite manipular rutas de archivos como objetos", "ok": true},
+        {"text": "Crea directorios temporales", "ok": false},
+        {"text": "Exporta variables de entorno", "ok": false},
+        {"text": "Cifra archivos automáticamente", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 66,
+      "question": "¿Qué hace 'enumerate(lista)'?",
+      "options": [
+        {"text": "Devuelve pares (índice, valor)", "ok": true},
+        {"text": "Convierte todos los valores a texto", "ok": false},
+        {"text": "Cuenta elementos iguales", "ok": false},
+        {"text": "Reemplaza valores nulos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 67,
+      "question": "¿Para qué se usa '__name__ == \"__main__\"'?",
+      "options": [
+        {"text": "Comprueba si el script se está ejecutando directamente", "ok": true},
+        {"text": "Importa funciones de forma segura", "ok": false},
+        {"text": "Declara una clase especial", "ok": false},
+        {"text": "Inicia un hilo principal", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 68,
+      "question": "¿Qué hace el módulo 'timeit'?",
+      "options": [
+        {"text": "Mide el tiempo de ejecución de código", "ok": true},
+        {"text": "Sincroniza funciones con temporizador", "ok": false},
+        {"text": "Genera timestamps", "ok": false},
+        {"text": "Simula llamadas de red", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 69,
+      "question": "¿Qué permite la función 'zip()'?",
+      "options": [
+        {"text": "Combina varios iterables en tuplas", "ok": true},
+        {"text": "Reemplaza valores duplicados", "ok": false},
+        {"text": "Convierte listas a diccionarios", "ok": false},
+        {"text": "Ordena listas simultáneamente", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 70,
+      "question": "¿Qué hace el operador 'is'?",
+      "options": [
+        {"text": "Comprueba si dos variables apuntan al mismo objeto", "ok": true},
+        {"text": "Compara valores de cadenas", "ok": false},
+        {"text": "Verifica igualdad de contenido", "ok": false},
+        {"text": "Evalúa tipo de variable", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 71,
+      "question": "¿Qué hace 'del variable'?",
+      "options": [
+        {"text": "Elimina la variable del espacio de nombres", "ok": true},
+        {"text": "Cierra el archivo vinculado", "ok": false},
+        {"text": "Mueve una variable a memoria compartida", "ok": false},
+        {"text": "Convierte en constante", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 72,
+      "question": "¿Qué hace el método '__iter__'?",
+      "options": [
+        {"text": "Permite que un objeto sea iterable", "ok": true},
+        {"text": "Transforma listas en strings", "ok": false},
+        {"text": "Convierte generadores en listas", "ok": false},
+        {"text": "Declara argumentos de entrada", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 73,
+      "question": "¿Qué hace 'isinstance(obj, Clase)'?",
+      "options": [
+        {"text": "Devuelve True si obj es instancia de Clase", "ok": true},
+        {"text": "Evalúa si una clase es abstracta", "ok": false},
+        {"text": "Crea una nueva instancia", "ok": false},
+        {"text": "Verifica si es subclase", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 74,
+      "question": "¿Qué hace '__contains__'?",
+      "options": [
+        {"text": "Define el comportamiento del operador 'in'", "ok": true},
+        {"text": "Comprueba longitud del objeto", "ok": false},
+        {"text": "Evalúa igualdad entre objetos", "ok": false},
+        {"text": "Filtra elementos duplicados", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 75,
+      "question": "¿Qué hace 'filter(func, iterable)'?",
+      "options": [
+        {"text": "Filtra los elementos que cumplen una condición", "ok": true},
+        {"text": "Elimina elementos vacíos", "ok": false},
+        {"text": "Ordena los elementos", "ok": false},
+        {"text": "Agrupa elementos por tipo", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 76,
+      "question": "¿Qué hace 'map(func, iterable)'?",
+      "options": [
+        {"text": "Aplica una función a cada elemento", "ok": true},
+        {"text": "Filtra elementos duplicados", "ok": false},
+        {"text": "Transforma un iterable en diccionario", "ok": false},
+        {"text": "Reordena los elementos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 77,
+      "question": "¿Qué hace 'reduce(func, iterable)'?",
+      "options": [
+        {"text": "Reduce el iterable a un solo valor acumulando resultados", "ok": true},
+        {"text": "Corta elementos de la lista", "ok": false},
+        {"text": "Divide el iterable en partes iguales", "ok": false},
+        {"text": "Agrupa por categoría", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 78,
+      "question": "¿Qué hace '__eq__' en una clase?",
+      "options": [
+        {"text": "Define la lógica para comparar igualdad con '=='", "ok": true},
+        {"text": "Establece propiedades privadas", "ok": false},
+        {"text": "Compara clases base", "ok": false},
+        {"text": "Define el tipo de retorno", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 79,
+      "question": "¿Qué hace 'assert' en Python?",
+      "options": [
+        {"text": "Lanza un error si una condición es falsa", "ok": true},
+        {"text": "Convierte a booleano", "ok": false},
+        {"text": "Especifica el tipo de variable", "ok": false},
+        {"text": "Ignora errores de ejecución", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 80,
+      "question": "¿Qué hace 'breakpoint()'?",
+      "options": [
+        {"text": "Inicia una sesión de depuración interactiva", "ok": true},
+        {"text": "Detiene permanentemente el programa", "ok": false},
+        {"text": "Ignora el siguiente bloque de código", "ok": false},
+        {"text": "Cierra la consola", "ok": false}
+      ],
+      "image": null
+    },
+        {
+      "id": 81,
+      "question": "¿Qué hace '__str__' en una clase?",
+      "options": [
+        {"text": "Devuelve una representación amigable del objeto", "ok": true},
+        {"text": "Genera un ID único para el objeto", "ok": false},
+        {"text": "Establece el tipo del objeto", "ok": false},
+        {"text": "Transforma el objeto en lista", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 82,
+      "question": "¿Qué permite el módulo 'logging'?",
+      "options": [
+        {"text": "Registrar mensajes y errores en distintos niveles", "ok": true},
+        {"text": "Guardar archivos temporales", "ok": false},
+        {"text": "Iniciar sesiones de usuario", "ok": false},
+        {"text": "Cifrar datos sensibles", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 83,
+      "question": "¿Qué hace el módulo 'heapq'?",
+      "options": [
+        {"text": "Proporciona funciones para trabajar con colas de prioridad (heaps)", "ok": true},
+        {"text": "Optimiza estructuras de strings", "ok": false},
+        {"text": "Controla concurrencia entre procesos", "ok": false},
+        {"text": "Resuelve conflictos entre tipos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 84,
+      "question": "¿Qué hace '__doc__' en una función o clase?",
+      "options": [
+        {"text": "Devuelve el string de documentación (docstring)", "ok": true},
+        {"text": "Inicializa comentarios internos", "ok": false},
+        {"text": "Muestra las variables globales", "ok": false},
+        {"text": "Almacena metadatos JSON", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 85,
+      "question": "¿Qué hace '__annotations__' en Python?",
+      "options": [
+        {"text": "Contiene las anotaciones de tipo de una función o clase", "ok": true},
+        {"text": "Importa módulos anotados", "ok": false},
+        {"text": "Imprime advertencias de tipado", "ok": false},
+        {"text": "Verifica compatibilidad entre versiones", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 86,
+      "question": "¿Qué hace '__dict__' en un objeto?",
+      "options": [
+        {"text": "Devuelve un diccionario con sus atributos", "ok": true},
+        {"text": "Convierte un objeto en JSON", "ok": false},
+        {"text": "Exporta una clase", "ok": false},
+        {"text": "Filtra atributos ocultos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 87,
+      "question": "¿Qué hace 'super()' en una clase?",
+      "options": [
+        {"text": "Accede a métodos y atributos de la clase base", "ok": true},
+        {"text": "Elimina la clase heredada", "ok": false},
+        {"text": "Convierte en clase abstracta", "ok": false},
+        {"text": "Ignora los métodos sobrescritos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 88,
+      "question": "¿Qué hace 'object.__new__'?",
+      "options": [
+        {"text": "Crea una nueva instancia antes de __init__", "ok": true},
+        {"text": "Inicializa atributos por defecto", "ok": false},
+        {"text": "Importa clases dinámicamente", "ok": false},
+        {"text": "Devuelve la clase base", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 89,
+      "question": "¿Qué permite el módulo 'typing.Union'?",
+      "options": [
+        {"text": "Especificar múltiples tipos válidos para una variable", "ok": true},
+        {"text": "Crear una clase genérica", "ok": false},
+        {"text": "Unir funciones decoradas", "ok": false},
+        {"text": "Importar varios módulos simultáneamente", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 90,
+      "question": "¿Qué hace el método '__format__'?",
+      "options": [
+        {"text": "Define la salida personalizada para str.format()", "ok": true},
+        {"text": "Formatea fechas por defecto", "ok": false},
+        {"text": "Aplica reglas de indentación", "ok": false},
+        {"text": "Valida campos numéricos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 91,
+      "question": "¿Qué hace 'traceback.format_exc()'?",
+      "options": [
+        {"text": "Devuelve el traceback actual como string", "ok": true},
+        {"text": "Imprime la última excepción", "ok": false},
+        {"text": "Guarda el error en un log", "ok": false},
+        {"text": "Ignora la excepción activa", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 92,
+      "question": "¿Qué es un generador en Python?",
+      "options": [
+        {"text": "Una función que usa yield para producir valores uno a uno", "ok": true},
+        {"text": "Una clase que produce listas", "ok": false},
+        {"text": "Una estructura inmutable", "ok": false},
+        {"text": "Un iterador interno de listas", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 93,
+      "question": "¿Qué hace 'inspect.getsource(func)'?",
+      "options": [
+        {"text": "Devuelve el código fuente de una función", "ok": true},
+        {"text": "Imprime la firma de la función", "ok": false},
+        {"text": "Exporta la función a otro archivo", "ok": false},
+        {"text": "Convierte funciones a bytes", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 94,
+      "question": "¿Qué hace 'repr(obj)'?",
+      "options": [
+        {"text": "Devuelve una representación oficial del objeto", "ok": true},
+        {"text": "Convierte el objeto a string legible", "ok": false},
+        {"text": "Serializa el objeto", "ok": false},
+        {"text": "Cierra el objeto", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 95,
+      "question": "¿Qué hace '__hash__'?",
+      "options": [
+        {"text": "Define el valor hash de un objeto", "ok": true},
+        {"text": "Cifra un objeto como string", "ok": false},
+        {"text": "Valida claves de diccionario", "ok": false},
+        {"text": "Reinicia la tabla de símbolos", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 96,
+      "question": "¿Qué hace '__lt__' en una clase?",
+      "options": [
+        {"text": "Define el comportamiento para '<'", "ok": true},
+        {"text": "Indica que la clase no se puede heredar", "ok": false},
+        {"text": "Elimina atributos privados", "ok": false},
+        {"text": "Convierte enteros en flotantes", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 97,
+      "question": "¿Qué hace '__bool__'?",
+      "options": [
+        {"text": "Define el valor booleano de un objeto", "ok": true},
+        {"text": "Evalúa expresiones condicionales", "ok": false},
+        {"text": "Actúa como operador lógico", "ok": false},
+        {"text": "Valida funciones lambda", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 98,
+      "question": "¿Qué hace 'eval()' en Python?",
+      "options": [
+        {"text": "Evalúa una expresión como código Python", "ok": true},
+        {"text": "Evalúa el tipo de una variable", "ok": false},
+        {"text": "Ejecuta un archivo", "ok": false},
+        {"text": "Limpia variables del entorno", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 99,
+      "question": "¿Qué hace 'exec()' en Python?",
+      "options": [
+        {"text": "Ejecuta un bloque de código dinámicamente", "ok": true},
+        {"text": "Exporta variables globales", "ok": false},
+        {"text": "Convierte strings en listas", "ok": false},
+        {"text": "Detiene la ejecución del script", "ok": false}
+      ],
+      "image": null
+    },
+    {
+      "id": 100,
+      "question": "¿Qué hace '__class__' en una instancia?",
+      "options": [
+        {"text": "Devuelve la clase a la que pertenece el objeto", "ok": true},
+        {"text": "Convierte la instancia en clase base", "ok": false},
+        {"text": "Elimina métodos mágicos", "ok": false},
+        {"text": "Define el tipo de retorno", "ok": false}
+      ],
+      "image": null
+    }
+  ]
+}
+
