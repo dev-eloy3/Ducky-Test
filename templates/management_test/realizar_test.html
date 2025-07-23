@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>{{ test.title }}</h2>
+  {% if pregunta.multiple_correctas %}
+  <div class="alert alert-info">Esta pregunta admite <strong>varias respuestas correctas</strong>.</div>
+{% else %}
+  <div class="alert alert-warning">Esta pregunta tiene <strong>solo una respuesta correcta</strong>.</div>
+{% endif %}
+
+  <p class="text-muted">Pregunta {{ numero }} de {{ total }}</p>
+  <div class="mb-3 d-flex flex-wrap justify-content-center gap-2">
+    {% for item in barra_estado %}
+      <a href="?pregunta={{ forloop.counter0 }}"
+        class="btn btn-sm
+          {% if item.actual %}
+            btn-primary
+          {% elif item.estado == 'respondida' %}
+            btn-success
+          {% else %}
+            btn-secondary
+          {% endif %}
+        ">
+        {{ item.numero }}
+      </a>
+    {% endfor %}
+  </div>
+
+  <div class="card shadow p-4 mt-3">
+    <h5>
+      {{ pregunta.question }}
+      <small class="text-muted">({{ pregunta.categoria|default:"" }})</small>
+    </h5>
+
+    {% if pregunta.image %}
+      <img src="{{ pregunta.image }}" alt="Imagen" class="img-fluid mb-3">
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      {% for opcion in pregunta.options %}
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" name="respuesta" id="opcion{{ forloop.counter }}" value="{{ opcion.text }}">
+          <label class="form-check-label" for="opcion{{ forloop.counter }}">
+            {{ opcion.text }}
+          </label>
+        </div>
+      {% endfor %}
+      <button type="submit" class="btn btn-success mt-3" {% if numero == total %}name="finalizar" value="1"{% endif %}>
+        {% if numero == total %}Finalizar{% else %}Siguiente{% endif %}
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
