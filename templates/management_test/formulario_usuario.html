@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Comentario sobre el test: {{ test.test_title }}</h2>
+
+  <div class="mb-3">
+    <label class="form-label fw-bold">Comentario del profesor:</label>
+    <div class="border rounded p-3 bg-light text-dark">
+      {{ comentario_profesor|linebreaks }}
+    </div>
+  </div>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="comentario_usuario" class="form-label fw-bold">Tu comentario</label>
+      <textarea id="comentario_usuario" name="comentario_usuario" class="form-control" rows="5" placeholder="Escribe tu respuesta aquí...">{{ comentario_usuario }}</textarea>
+    </div>
+    <div class="text-end">
+      <button type="submit" class="btn btn-primary">Guardar comentario</button>
+      <a href="{% url 'historial_tests' %}" class="btn btn-outline-secondary">Cancelar</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
