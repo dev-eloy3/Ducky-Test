@@ -13,7 +13,7 @@ Está diseñada para centros formativos, docentes y alumnos, facilitando la crea
 1. **Clona el repositorio o copia el proyecto**:
 
 ```bash
-git clone <url-del-repo>
+git clone https://github.com/dev-eloy3/Ducky-Test.git
 cd ducky-main
 ```
 
