@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-4">
+  <h2>Modificar Test de Inteligencias Múltiples: {{ filename }}</h2>
+
+  <form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label class="form-label">Título</label>
+      <input type="text" class="form-control" name="titulo" value="{{ test_data.title }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea name="descripcion" class="form-control" rows="2">{{ test_data.description }}</textarea>
+    </div>
+
+    <hr>
+    <h4>Preguntas</h4>
+
+    {% for pregunta in test_data.questions %}
+      <div class="mb-4 border p-3 rounded">
+        <label class="form-label">Pregunta {{ pregunta.id }}</label>
+        <input type="text" class="form-control" name="pregunta_{{ pregunta.id }}" value="{{ pregunta.question|default_if_none:'' }}" required>
+
+        <div class="mb-3 mt-2">
+          <label class="form-label">Categoría</label>
+          <input type="text" class="form-control" name="categoria_{{ pregunta.id }}" value="{{ pregunta.categoria|default_if_none:'' }}">
+        </div>
+
+        <label class="form-label mt-2">Opciones</label>
+        {% for opcion in pregunta.options %}
+          <div class="form-check mb-1">
+            <input type="checkbox" class="form-check-input" name="ok_{{ pregunta.id }}_{{ forloop.counter }}" {% if opcion.ok %}checked{% endif %}>
+            <input type="text" class="form-control d-inline-block w-75" name="opcion_{{ pregunta.id }}_{{ forloop.counter }}" value="{{ opcion.text|default_if_none:'' }}" required>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-success">Guardar cambios</button>
+    <a href="{% url 'home' %}" class="btn btn-secondary ms-2">Cancelar</a>
+  </form>
+</div>
+{% endblock %}

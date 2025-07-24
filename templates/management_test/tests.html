@@ -14,15 +14,24 @@
               <small class="text-muted">Archivo: {{ test.filename }}</small>
             </p>
 
-            {% if test.filename %}
-              {% if "inteligencias" in test.filename %}
-                <a href="{% url 'seleccionar_categorias' filename=test.filename %}" class="btn btn-primary mt-auto">Hacer test</a>
-              {% else %}
-                <a href="{% url 'realizar_test' test.filename %}" class="btn btn-primary mt-auto">Hacer test</a>
-              {% endif %}
-            {% else %}
-              <span class="text-danger mt-auto">Archivo no disponible</span>
-            {% endif %}
+           {% if test.filename %}
+  {% if es_teacher %}
+    {% if "inteligencias" in test.filename %}
+      <a href="{% url 'modificar_test_inteligencias' filename=test.filename %}" class="btn btn-warning mt-auto">Modificar test</a>
+    {% else %}
+      <a href="{% url 'modificar_test' filename=test.filename %}" class="btn btn-warning mt-auto">Modificar test</a>
+    {% endif %}
+  {% else %}
+    {% if "inteligencias" in test.filename %}
+      <a href="{% url 'seleccionar_categorias' filename=test.filename %}" class="btn btn-primary mt-auto">Hacer test</a>
+    {% else %}
+      <a href="{% url 'realizar_test' test.filename %}" class="btn btn-primary mt-auto">Hacer test</a>
+    {% endif %}
+  {% endif %}
+{% else %}
+  <span class="text-danger mt-auto">Archivo no disponible</span>
+{% endif %}
+
 
           </div>
         </div>
