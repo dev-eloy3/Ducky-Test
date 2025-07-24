@@ -47,13 +47,17 @@ python manage.py migrate
 python manage.py createsuperuser
 
 ```
-
-6. **(Opcional) Carga los tests predefinidos:**
+6. **Crear los grupos de:**
+```bash
+alumnos
+Teachers
+```
+7. **(Opcional) Carga los tests predefinidos:**
 ```bash
 python manage.py loaddata tests/python_basico_test.json
 
 ```
-7. **Inicia el servidor:**
+8. **Inicia el servidor:**
 ```bash
 python manage.py runserver
 ```
