@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Guardado</title>
+    <script>
+        // Mostrar alerta al cargar la página
+        window.onload = function () {
+            alert("Test guardado correctamente como {{ nombre_archivo }}");
+            // Redirigir después de 5 segundos (5000 ms)
+            setTimeout(function () {
+                window.location.href = "{% url 'dashboard_professor' %}";
+            }, 5000);
+        }
+    </script>
+</head>
+<body>
+    <p>Redirigiendo al panel del profesor en unos segundos...</p>
+</body>
+</html>

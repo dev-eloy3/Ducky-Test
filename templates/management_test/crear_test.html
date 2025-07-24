@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Crear nuevo test</h2>
+
+  <form method="post" id="formTest">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="titulo" class="form-label">Título del test</label>
+      <input type="text" class="form-control" id="titulo" name="titulo" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripción</label>
+      <textarea class="form-control" id="descripcion" name="descripcion" rows="2"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="categoria" class="form-label">Categoría</label>
+      <input type="text" class="form-control" id="categoria" name="categoria" placeholder="Ej: Programación">
+    </div>
+
+    <div class="mb-3">
+      <label for="subcategoria" class="form-label">Subcategoría</label>
+      <input type="text" class="form-control" id="subcategoria" name="subcategoria" placeholder="Ej: Python Avanzado">
+    </div>
+
+    <div class="mb-3">
+      <label for="tags" class="form-label">Tags (separados por coma)</label>
+      <input type="text" class="form-control" id="tags" name="tags" placeholder="Ej: python, programación, avanzado">
+    </div>
+
+    <hr>
+
+    <h4>Preguntas</h4>
+    <div id="preguntas-container"></div>
+
+    <button type="button" class="btn btn-secondary mb-3" onclick="agregarPregunta()">+ Añadir pregunta</button>
+
+    <div>
+      <button type="submit" class="btn btn-primary">Guardar test como JSON</button>
+    </div>
+  </form>
+</div>
+
+<script>
+let contadorPreguntas = 0;
+
+function agregarPregunta() {
+  contadorPreguntas++;
+  const container = document.getElementById('preguntas-container');
+
+  const divPregunta = document.createElement('div');
+  divPregunta.classList.add('mb-4', 'border', 'p-3', 'rounded');
+  divPregunta.id = `pregunta-${contadorPreguntas}`;
+
+  divPregunta.innerHTML = `
+    <h5>Pregunta ${contadorPreguntas}</h5>
+    <div class="mb-3">
+      <label>Texto de la pregunta</label>
+      <input type="text" class="form-control" name="pregunta_${contadorPreguntas}" required>
+    </div>
+
+    <div class="mb-3 opciones-container">
+      <label>Opciones</label>
+      <div id="opciones-${contadorPreguntas}"></div>
+      <button type="button" class="btn btn-sm btn-outline-secondary mt-2" onclick="agregarOpcion(${contadorPreguntas})">+ Añadir opción</button>
+    </div>
+  `;
+
+  container.appendChild(divPregunta);
+
+  // Añadir dos opciones por defecto
+  agregarOpcion(contadorPreguntas);
+  agregarOpcion(contadorPreguntas);
+}
+
+function agregarOpcion(preguntaId) {
+  const opcionesDiv = document.getElementById(`opciones-${preguntaId}`);
+  const numOpciones = opcionesDiv.childElementCount + 1;
+
+  const opcionDiv = document.createElement('div');
+  opcionDiv.classList.add('form-check', 'mb-2');
+
+  opcionDiv.innerHTML = `
+    <input class="form-check-input" type="checkbox" name="ok_${preguntaId}_${numOpciones}" id="ok_${preguntaId}_${numOpciones}">
+    <input type="text" class="form-control d-inline-block w-75" name="opcion_${preguntaId}_${numOpciones}" placeholder="Texto de la opción" required>
+  `;
+
+  opcionesDiv.appendChild(opcionDiv);
+}
+
+// Iniciar con una pregunta por defecto al cargar la página
+window.onload = () => {
+  agregarPregunta();
+}
+</script>
+{% endblock %}
