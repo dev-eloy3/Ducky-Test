@@ -18,5 +18,7 @@ urlpatterns = [
     path('seleccionar-categorias/<str:filename>/', views.seleccionar_categorias, name='seleccionar_categorias'),
     path('test/inteligencias/resultado/', views.resultado_test_inteligencias, name='resultado_test_inteligencias'),
     path('crear-test/', views.crear_test, name='crear_test'),
+    path('modificar/<str:filename>/', views.modificar_test, name='modificar_test'),
+    path('modificar/inteligencias/<str:filename>/', views.modificar_test_inteligencias, name='modificar_test_inteligencias'),
 
 ]
